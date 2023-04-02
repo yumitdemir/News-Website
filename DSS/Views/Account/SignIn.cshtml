@@ -2,6 +2,10 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    if (ViewBag.Message != null)
+    {
+        <p>invalid password</p>
+    }
 }
 
 <div class="vh-100 d-flex justify-content-center align-items-center">
@@ -10,22 +14,22 @@
             <div class="col-12 col-md-8 col-lg-6">
                 <div class="card bg-white">
                     <div class="card-body p-5">
-                        <form class="mb-3 mt-md-4">
+                        <form class="mb-3 mt-md-4" method="post" asp-controller="Account" asp-action="SignIn">
                             <h2 class="fw-bold mb-2 text-uppercase text-center"><img src="https://cdn-icons-png.flaticon.com/512/21/21601.png" style="width: 20%"/> | Your news website</h2>
 
                             <div class="mb-3">
-                                <label for="email" class="form-label ">Email address</label>
-                                <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                                <label for="username" class="form-label ">Username</label>
+                                <input type="text" class="form-control" id="username" placeholder="Username" name="Username">
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label ">Password</label>
-                                <input type="password" class="form-control" id="password" placeholder="*******">
+                                <input type="password" class="form-control" id="password" placeholder="*******" name="Password">
                             </div>
                             <p class="small">
                                 <a class="text-primary" href="">Forgot password?</a>
                             </p>
                             <div class="d-grid">
-                                <button class="btn btn-outline-dark" type="submit">
+                                <button class="btn btn-outline-dark" type="submit" value="SignIn">
                                     Sign
                                     in
                                 </button>

@@ -1,4 +1,7 @@
 
+using DSS.Models;
+using DSS.Sessions;
+
 namespace DSS
 {
     public class Program
@@ -10,6 +13,9 @@ namespace DSS
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddSession(); //! Related to authentication with session
+            builder.Services.AddScoped<IAccountService, AccountService>(); //! Related to authentication with session
+
 
             var app = builder.Build();
 
@@ -23,6 +29,11 @@ namespace DSS
             app.UseRouting();
 
             app.UseAuthorization();
+            
+
+            app.UseSession(); //! Related to authentication with session
+
+
 
             app.MapControllerRoute(
                 name: "default",
@@ -32,13 +43,13 @@ namespace DSS
 
             app.MapControllerRoute(
                 name: "SignInRoute",
-                pattern: "Login/SignIn",
-                defaults: new { controller = "Login", action = "SignIn" });
+                pattern: "Account/SignIn",
+                defaults: new { controller = "Account", action = "SignIn" });
 
             app.MapControllerRoute(
                 name: "SignUpRoute",
-                pattern: "Login/SignUp",
-                defaults: new { controller = "Login", action = "SignUp" });
+                pattern: "Account/SignUp",
+                defaults: new { controller = "Account", action = "SignUp" });
 
             app.MapControllerRoute(
                 name: "DetailsRouting",
