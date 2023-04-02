@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\DSS.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\css\\DetailsIndex.css",
+      "PackagePath": "staticwebassets\\css\\DetailsIndex.css"
+    },
+    {
       "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\css\\HomeIndex.css",
       "PackagePath": "staticwebassets\\css\\HomeIndex.css"
     },

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hH4k9f6rtbVdPTWXPpVTs9oJafr8PIZQM3ReMozY3c0=",
+  "Hash": "cZPDUkEE1UDRTeh9AjMzaulW/sS9K+WSxFEO7eIiTsI=",
   "Source": "DSS",
   "BasePath": "_content/DSS",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\DSS.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\css\\DetailsIndex.css",
+      "SourceId": "DSS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\",
+      "BasePath": "_content/DSS",
+      "RelativePath": "css/DetailsIndex.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\DetailsIndex.css"
     },
     {
       "Identity": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\css\\HomeIndex.css",

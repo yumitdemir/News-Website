@@ -40,7 +40,10 @@ namespace DSS
                 pattern: "Login/SignUp",
                 defaults: new { controller = "Login", action = "SignUp" });
 
-
+            app.MapControllerRoute(
+                name: "DetailsRouting",
+                pattern: "Details/{id}",
+                defaults: new { controller = "Details", action = "Index" });
 
             app.Run();
         }
