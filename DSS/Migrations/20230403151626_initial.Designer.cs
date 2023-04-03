@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DSS.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20230403095640_initial")]
+    [Migration("20230403151626_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -32,11 +32,11 @@ namespace DSS.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

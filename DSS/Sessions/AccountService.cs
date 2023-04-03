@@ -1,30 +1,25 @@
-﻿using DSS.Models;
+﻿using DSS.Data;
+using DSS.Models;
 
-namespace DSS.Sessions
+namespace DSS.Sessions;
+
+public class AccountService : IAccountService
 {
-    public class AccountService : IAccountService
-    {
-        private List<AccountDTO> accounts;
+    private readonly ApplicationDBContext _context;
+    private List<UserModel> accounts;
 
-        public AccountService()
-        {
-            accounts = new List<AccountDTO>()
-            {
-                new AccountDTO()
-                {
-                    Username = "n123",
-                    Password="1234"
-                },
-                new AccountDTO()
-                {
-                    Username = "n123_",
-                    Password = "1234"
-                }
-            };
-        }
-        public AccountDTO? Login(string username, string password)
-        {
-            return accounts.SingleOrDefault(x=>x.Username == username && x.Password == password);
-        }
+    public AccountService(ApplicationDBContext dbContext)
+    {
+        _context = dbContext;
+        accounts = _context.Users.ToList();
+    }
+
+
+    
+    
+   
+    public UserModel? Login(string username, string password)
+    {
+        return accounts.SingleOrDefault(x => x.Username == username && x.Password == password);
     }
 }

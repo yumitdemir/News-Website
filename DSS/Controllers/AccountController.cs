@@ -14,16 +14,13 @@ public class AccountController : Controller
 
     public IActionResult SignIn()
     {
+        if (HttpContext.Session.GetString("username") != null) return RedirectToAction("Index", "Home");
         return View();
     }
 
     [HttpPost]
     public IActionResult SignIn(string username, string password)
     {
-        if (HttpContext.Session.GetString("username") != null)
-        {
-            return RedirectToAction("Index", "Home");
-        }
         var account = _accountService.Login(username, password);
         if (account != null)
         {
@@ -35,14 +32,12 @@ public class AccountController : Controller
             ViewBag.Message = "Invalid Login";
             return View();
         }
+        
     }
 
     public IActionResult Welcome()
     {
-        if (HttpContext.Session.GetString("username") == null)
-        {
-            return RedirectToAction("Signin", "Account");
-        }
+        if (HttpContext.Session.GetString("username") == null) return RedirectToAction("Signin", "Account");
 
         ViewBag.Message1 = "Success login";
         ViewBag.Message2 = HttpContext.Session.GetString("username");

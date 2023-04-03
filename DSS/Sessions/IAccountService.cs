@@ -4,7 +4,7 @@ namespace DSS.Sessions
 {
     public interface IAccountService
     {
-        public AccountDTO? Login(string username, string password);
+        public UserModel? Login(string username, string password);
 
     }
 }
