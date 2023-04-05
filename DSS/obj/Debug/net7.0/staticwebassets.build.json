@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cZPDUkEE1UDRTeh9AjMzaulW/sS9K+WSxFEO7eIiTsI=",
+  "Hash": "yjQZpV8sR8WHCLlMUn3yh3X8FuSPaX64IEz3FprUiVo=",
   "Source": "DSS",
   "BasePath": "_content/DSS",
   "Mode": "Default",
@@ -49,6 +49,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\DSS.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\plus.svg",
+      "SourceId": "DSS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\",
+      "BasePath": "_content/DSS",
+      "RelativePath": "Content/plus.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Content\\plus.svg"
+    },
+    {
+      "Identity": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\plus-circle.svg",
+      "SourceId": "DSS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\",
+      "BasePath": "_content/DSS",
+      "RelativePath": "Content/plus-circle.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Content\\plus-circle.svg"
     },
     {
       "Identity": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\css\\DetailsIndex.css",

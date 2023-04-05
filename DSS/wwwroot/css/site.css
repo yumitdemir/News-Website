@@ -1,20 +1,14 @@
-html {
-  font-size: 14px;
-}
+html { font-size: 14px; }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html { font-size: 16px; }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus { box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb; }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
@@ -23,16 +17,41 @@ body {
 }
 
 
-.hover-bold:hover {
-    border-bottom:  rgba(0, 0, 0, 0.8) 2px solid;
-}
+.hover-bold:hover { border-bottom: rgba(0, 0, 0, 0.8) 2px solid; }
 
 #login-btn {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
     color: white;
 }
-#login-btn:hover {
-    color: rgba(0, 0, 0, 0.7);
+
+#login-btn:hover { color: rgba(0, 0, 0, 0.7); }
+
+
+
+
+
+.add-news-btn {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.5s ease-in-out;
 }
 
+.add-news-btn:hover {
+    animation: spin-zoom 0.5s linear 0.5;
+    cursor: pointer;
+}
+
+@keyframes spin-zoom {
+    0% {
+        transform: scale(0.8) rotate(0deg); /* initial state with no scaling and rotation */
+    }
+
+    50% {
+        transform: scale(1.2) rotate(90deg); /* zoom-in to 120% scale and rotate 180 degrees */
+    }
+
+    100% {
+        transform: scale(1) rotate(360deg); /* return to original scale and rotate 360 degrees */
+    }
+}

@@ -1,7 +1,13 @@
 ﻿
 
 
-<h2>@ViewBag.Message1 </h2>
-<h3>@ViewBag.Message2 </h3>
 
-<a asp-controller="Account" asp-action="Logout">Log out</a>
+
+<div class="container d-flex flex-column align-items-center justify-content-center  m-5 ">
+    <div class="d-flex justify-content-center align-items-center m-5">
+        <h1>Welcome @ViewBag.Message1, You Succesfully Logged in</h1>
+    </div>
+    
+    <a class="fw-bold font-large" asp-action="Index" asp-controller="Home">Go back to home</a>
+
+</div>

@@ -1,32 +1,67 @@
 ﻿using DSS.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using DSS.Data;
 
-namespace DSS.Controllers
+
+namespace DSS.Controllers;
+
+public class HomeController : Controller
 {
-    public class HomeController : Controller
+    private readonly ILogger<HomeController> _logger;
+    private readonly ApplicationDBContext _context;
+
+    public HomeController(ILogger<HomeController> logger, ApplicationDBContext context)
     {
-        private readonly ILogger<HomeController> _logger;
+        _context = context;
+        _logger = logger;
+    }
 
-        public HomeController(ILogger<HomeController> logger)
+    public IActionResult Index(int id)
+    {
+
+       
+
+        var sessionFlag = HttpContext.Session.GetString("username") == null;
+        ViewBag.SessionFlag = sessionFlag;
+        var dataTransfer = new NewsDTO();
+
+        if (id <= 0)
+            id = 1;
+
+        var takeStart = (id * 10)-10;
+        if (takeStart == 0)
         {
-            _logger = logger;
+            takeStart = 0;
         }
 
-        public IActionResult Index()
+        if ( _context.News == null)
         {
-            return View();
+
+            return View(dataTransfer);
+        }
+        dataTransfer.latestNewsList = _context.News.Take(4).ToList();
+        dataTransfer.mainNewsList = _context.News.Take(5).ToList();
+        dataTransfer.allNewsList = _context.News.Skip(4).Skip(takeStart).Take(10).ToList();
+        dataTransfer.newsCount = _context.News.Skip(4).Count();
+        var pageCount = Math.Ceiling(dataTransfer.newsCount / 10);
+        if (pageCount < id)
+        {
+
+            return Redirect(Url.Content("~/"));
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        return View(dataTransfer);
+    }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+    public IActionResult Privacy()
+    {
+        return View();
+    }
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }

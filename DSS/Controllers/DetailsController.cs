@@ -1,12 +1,55 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DSS.Data;
+using DSS.Models;
+using DSS.Repository.CommentRepository;
+using DSS.Repository.Detail;
+using DSS.Repository.Sessions;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DSS.Controllers
 {
     public class DetailsController : Controller
     {
-        public IActionResult Index()
+       
+        private readonly IDetailRepository _detailRepository;
+        private readonly ICommentRepository _commentRepository;
+        private readonly IAccountRepository _accountRepository;
+
+        public DetailsController(IDetailRepository detailRepository, ICommentRepository commentRepository,IAccountRepository accountRepository)
         {
-            return View();
+           
+            _detailRepository = detailRepository;
+            _commentRepository = commentRepository;
+            _accountRepository = accountRepository;
+        }
+
+        public async Task<IActionResult> Index(int newsId)
+        {
+            NewsModel news = await _detailRepository.GetByIdAsync(newsId);
+            DetailDTO detailDto = new DetailDTO();
+            detailDto.news = news;
+            detailDto.comments = _commentRepository.getCommentsByNewsId(newsId).Result;
+
+
+
+
+            return View(detailDto);
+        }
+
+        [HttpPost]
+        public IActionResult Index(string content, int newsId)
+        {
+            //if (HttpContext.Session.GetString("username") == null) return RedirectToAction("Index");
+            
+
+
+            CommentModel newComment = new CommentModel();
+            newComment.Content = content;
+            newComment.AuthorId =  _accountRepository.getSesionUser(HttpContext.Session.GetString("username")).Result.Id;
+            newComment.NewsId = newsId;
+            _commentRepository.addComment(newComment);
+
+
+            return RedirectToAction("Index");
         }
     }
 }

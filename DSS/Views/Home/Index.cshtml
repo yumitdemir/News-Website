@@ -1,49 +1,71 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model NewsDTO
+
+
+
+
+
+
+
 <link rel="stylesheet" href="css/HomeIndex.css">
 
-<div class="container main-news section">
+<div class="container main-news section ">
+    @{
+        if (TempData["loginMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show  "  role="alert">
+                @TempData["loginMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        if (TempData["logoutMessage"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show  "  role="alert">
+                @TempData["logoutMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+    }
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-6">
             <div class="card position-relative news-card mb-4">
                 <div class="overlay"></div>
                 <img src="https://letzcricket.com/uploads/news/ZqXXlQDeCffne57g.jpg" class=" card-img-top thumb" alt="...">
-                <h3 class="card-title position-absolute w-100 text-light card-title-inside-img"> Nepal and PNG to play ODI series in Oman</h3>
+                <h3 class="card-title position-absolute w-100 text-light card-title-inside-img">@* @Model.allNewsList[0].Title*@</h3>
             </div>
-           
+
+
         </div>
+
         <div class="col-sm-12 col-md-6 col-lg-6  ">
-            <div class="row ">
+            <div class="row  ">
                 <div class="col-md-6 col-sm-12  col-lg-6">
-
-                    <div class="card position-relative news-card mb-4">
-                        <div class="overlay"></div>
-                        <img src="https://letzcricket.com/uploads/news/Pk9jw3Z9iv8EBLxE.jpg" class="card-img-top thumb" alt="...">
-                        <h5 class="card-title position-absolute w-100 text-light card-title-inside-img">Paras Khadka retires from international cricket</h5>
-                    </div>
-
-                    <div class="card position-relative news-card ">
-                        <div class="overlay"></div>
-                        <img src="https://letzcricket.com/uploads/news/aU1BQdD1aezJIXUv.jpg" class="card-img-top thumb" alt="...">
-                        <h5 class="card-title position-absolute w-100 text-light card-title-inside-img">New Zealand win inaugural World Test Championship</h5>
-                    </div>
-
+                    @{
+                        for (var i = 0; i < 2; i++)
+                        {
+                            <div class="card position-relative news-card mb-4">
+                                <div class="overlay"></div>
+                                <img src="https://letzcricket.com/uploads/news/Pk9jw3Z9iv8EBLxE.jpg" class="card-img-top thumb" alt="...">
+                                <h5 class="card-title position-absolute w-100 text-light card-title-inside-img">Paras Khadka retires from international cricket</h5>
+                            </div>
+                        }
+                    }
 
                 </div>
 
-                <div class="col-md-6 col-sm-12 col-xs-12 col-lg-6">
-                    <div class="card position-relative news-card mb-2">
-                        <div class="overlay"></div>
-                        <img src="https://letzcricket.com/uploads/news/rTv8qzdEizH8HSTE.png" class="card-img-top thumb" alt="...">
-                        <h5 class="card-title position-absolute w-100 text-light card-title-inside-img">Afridi to play Everest Premier League from Kathmandu Kings</h5>
-                    </div>
-
-                    <div class="card position-relative news-card">
-                        <div class="overlay"></div>
-                        <img src="https://letzcricket.com/uploads/news/VxmVhzyjAkw3hCaB.png" class="card-img-top thumb" alt="...">
-                        <h5 class="card-title position-absolute w-100 text-light card-title-inside-img">IPL 2021 to resume in UAE in September-October</h5>
-                    </div>
+                <div class="col-md-6 col-sm-12  col-lg-6">
+                    @{
+                        for (var i = 2; i < 4; i++)
+                        {
+                            <div class="card position-relative news-card mb-4">
+                                <div class="overlay"></div>
+                                <img src="https://letzcricket.com/uploads/news/Pk9jw3Z9iv8EBLxE.jpg" class="card-img-top thumb" alt="...">
+                                <h5 class="card-title position-absolute w-100 text-light card-title-inside-img">Paras Khadka retires from international cricket</h5>
+                            </div>
+                        }
+                    }
 
 
                 </div>
@@ -57,51 +79,36 @@
         <span>Latest Headlines</span>
     </div>
     <div class="row">
-        
-        
 
-        <div class="col-sm-12  col-md-3 col-lg-3">
-            <div class="card mb-3 border-0">
-                <div class="overlay"></div>
-                <img src="https://letzcricket.com/uploads/news/zXhIbjMmry4D2Sup.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title text-white">India vs England 4th T20 : Match Prediction, Probabale XI, Fantasy Picks</h5>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12  col-md-3 col-lg-3">
-            <div class="card mb-3 border-0">
-                <div class="overlay"></div>
-                <img src="https://letzcricket.com/uploads/articles/6CdghhIpvYREvJ6a.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title text-white"> Glenn Maxwell's All-Time IPL XI, Big names missing</h5>
-                    <p class="card-text text-white"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
 
-        </div>
-        <div class="col-sm-12  col-md-3 col-lg-3">
-            <div class="card mb-3 border-0">
-                <div class="overlay"></div>
-                <img src="https://letzcricket.com/uploads/articles/dddNsPXVC6f5bmI5.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title text-white"> Can Rohit be next Sehwag in Indian Test Cricket</h5>
-                    <p class="card-text text-white"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
+        @{
+            if (Model.allNewsList.Count() != 0)
+            {
 
-        </div>
-        <div class="col-sm-12 col-md-3 col-lg-3">
-            <div class="card mb-3 border-0">
-                <div class="overlay"></div>
-                <img src="https://letzcricket.com/uploads/articles/sL1e41w4xUmSDA8L.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title text-white"> Domestic Cricket changing the face of Nepali Cricket</h5>
-                    <p class="card-text text-white"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-        </div>
+                foreach (var news in Model.latestNewsList)
+                    {
+                    <div class="col-sm-12  col-md-3 col-lg-3">
+                        <div class="card mb-3 border-0">
+                            <div class="overlay"></div>
+                            <img src="https://letzcricket.com/uploads/news/zXhIbjMmry4D2Sup.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-white">@news.Title</h5>
+                                <p class="card-text">
+                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p class="disabled">No news found</p>
+            }
+          
+        }
+
+
     </div>
 </div>
 
@@ -113,132 +120,137 @@
                 <div class="section-title">
                     <span>All News</span>
                 </div>
-                <div class="row mb-3 bb-1 pt-0 all-news-item" onclick="alert('You clicked the div!')">
-                    <div class="col-md-4 col-lg-4 col-sm-12 ">
-                        <img class="thumb" src="https://letzcricket.com/uploads/news/vGWpKyVU7jHXz5K8.png">
-                    </div>
-                    <div class="col-md-8 col-lg-8 col-sm-12 ">
-                        <h5>
-                            <a href="detail.html">
-                                India win series despite Sam Curran's heroics
-                            </a>
-                        </h5>
-                        <small>29th August, 2021</small>
-                        <p class="summary pt-3">Despite heroic innings from the bat of Sam Curran, India defeated England by 7 runs to win the 3 match series 2-1. Chasing a target of 330 runs to win, the visiting team finished on 322/9 falling short of the target by 7 runs.</p>
-                    </div>
-                </div>
-                <div class="row mb-3 bb-1 pt-0 all-news-item" onclick="alert('You clicked the div!')">
-                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-                        <img class="thumb" src="https://letzcricket.com/uploads/news/vGWpKyVU7jHXz5K8.png">
-                    </div>
-                    <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
-                        <h5>
-                            <a href="detail.html">
-                                India win series despite Sam Curran's heroics
-                            </a>
-                        </h5>
-                        <small>29th August, 2021</small>
-                        <p class="summary pt-3">Despite heroic innings from the bat of Sam Curran, India defeated England by 7 runs to win the 3 match series 2-1. Chasing a target of 330 runs to win, the visiting team finished on 322/9 falling short of the target by 7 runs.</p>
-                    </div>
-                </div>
-                <div class="row mb-3 bb-1 pt-0 all-news-item" onclick="alert('You clicked the div!')">
-                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-                        <img class="thumb" src="https://letzcricket.com/uploads/news/vGWpKyVU7jHXz5K8.png">
-                    </div>
-                    <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
-                        <h5>
-                            <a href="detail.html">
-                                India win series despite Sam Curran's heroics
-                            </a>
-                        </h5>
-                        <small>29th August, 2021</small>
-                        <p class="summary pt-3">Despite heroic innings from the bat of Sam Curran, India defeated England by 7 runs to win the 3 match series 2-1. Chasing a target of 330 runs to win, the visiting team finished on 322/9 falling short of the target by 7 runs.</p>
-                    </div>
-                </div>
-                <div class="row mb-3 bb-1 pt-0 all-news-item" onclick="alert('You clicked the div!')">
-                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-                        <img class="thumb" src="https://letzcricket.com/uploads/news/vGWpKyVU7jHXz5K8.png">
-                    </div>
-                    <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
-                        <h5>
-                            <a href="detail.html">
-                                India win series despite Sam Curran's heroics
-                            </a>
-                        </h5>
-                        <small>29th August, 2021</small>
-                        <p class="summary pt-3">Despite heroic innings from the bat of Sam Curran, India defeated England by 7 runs to win the 3 match series 2-1. Chasing a target of 330 runs to win, the visiting team finished on 322/9 falling short of the target by 7 runs.</p>
-                    </div>
-                </div>
-                <div class="row mb-3 bb-1 pt-0 all-news-item">
-                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-                        <img class="thumb" src="https://letzcricket.com/uploads/news/vGWpKyVU7jHXz5K8.png">
-                    </div>
-                    <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
-                        <h5>
-                            <a href="detail.html">
-                                India win series despite Sam Curran's heroics
-                            </a>
-                        </h5>
-                        <small>29th August, 2021</small>
-                        <p class="summary pt-3">Despite heroic innings from the bat of Sam Curran, India defeated England by 7 runs to win the 3 match series 2-1. Chasing a target of 330 runs to win, the visiting team finished on 322/9 falling short of the target by 7 runs.</p>
-                    </div>
-                </div>
-                <div class="row mb-3 bb-1 pt-0 all-news-item">
-                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-                        <img class="thumb" src="https://letzcricket.com/uploads/news/vGWpKyVU7jHXz5K8.png">
-                    </div>
-                    <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
-                        <h5>
-                            <a href="detail.html">
-                                India win series despite Sam Curran's heroics
-                            </a>
-                        </h5>
-                        <small>29th August, 2021</small>
-                        <p class="summary pt-3">Despite heroic innings from the bat of Sam Curran, India defeated England by 7 runs to win the 3 match series 2-1. Chasing a target of 330 runs to win, the visiting team finished on 322/9 falling short of the target by 7 runs.</p>
-                    </div>
-                </div>
-                <div class="row mb-3 bb-1 pt-0 all-news-item">
-                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-                        <img class="thumb" src="https://letzcricket.com/uploads/news/vGWpKyVU7jHXz5K8.png">
-                    </div>
-                    <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
-                        <h5>
-                            <a href="detail.html">
-                                India win series despite Sam Curran's heroics
-                            </a>
-                        </h5>
-                        <small>29th August, 2021</small>
-                        <p class="summary pt-3">Despite heroic innings from the bat of Sam Curran, India defeated England by 7 runs to win the 3 match series 2-1. Chasing a target of 330 runs to win, the visiting team finished on 322/9 falling short of the target by 7 runs.</p>
-                    </div>
-                </div>
-                <div class="row mb-3 bb-1 pt-0 all-news-item">
-                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-                        <img class="thumb" src="https://letzcricket.com/uploads/news/vGWpKyVU7jHXz5K8.png">
-                    </div>
-                    <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
-                        <h5>
-                            <a href="detail.html">
-                                India win series despite Sam Curran's heroics
-                            </a>
-                        </h5>
-                        <small>29th August, 2021</small>
-                        <p class="summary pt-3">Despite heroic innings from the bat of Sam Curran, India defeated England by 7 runs to win the 3 match series 2-1. Chasing a target of 330 runs to win, the visiting team finished on 322/9 falling short of the target by 7 runs.</p>
-                    </div>
-                </div>
-                <div class="row mb-3 bb-1 pt-0 all-news-item">
-                    <div class="col-md-4 col-lg-4 col-sm-12 ">
-                        <img class="thumb" src="https://letzcricket.com/uploads/news/vGWpKyVU7jHXz5K8.png">
-                    </div>
-                    <div class="col-md-8 col-lg-8 col-sm-12 ">
-                        <h5>
-                            <a href="detail.html">
-                                India win series despite Sam Curran's heroics
-                            </a>
-                        </h5>
-                        <small>29th August, 2021</small>
-                        <p class="summary pt-3">Despite heroic innings from the bat of Sam Curran, India defeated England by 7 runs to win the 3 match series 2-1. Chasing a target of 330 runs to win, the visiting team finished on 322/9 falling short of the target by 7 runs.</p>
-                    </div>
-                </div>
+                @{
+                    if (Model.allNewsList.Count() != 0)
+                    {
+                        Console.WriteLine(Model.allNewsList.Count());
+                        foreach (var news in Model.allNewsList)
+                        {
+                            <div class="row mb-3 bb-1 pt-0 all-news-item" onclick="alert('You clicked the div!')">
+                                <div class="col-md-4 col-lg-4 col-sm-12 ">
+                                    <img class="thumb" src="https://letzcricket.com/uploads/news/vGWpKyVU7jHXz5K8.png">
+                                </div>
+                                <div class="col-md-8 col-lg-8 col-sm-12 ">
+                                    <h5>
+                                        <a href="detail.html">
+                                            @news.Title
+                                        </a>
+                                    </h5>
+                                    <small>29th August, 2021</small>
+                                    <p class="summary pt-3">@news.Content</p>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <p class="disabled">No news found</p>
+                    }
+                   
+                }
+                @{
+
+                    var newsCount = Model.newsCount;
+                    var pageCount = Math.Ceiling(newsCount / 10);
+                    var idRouteValue = Context.Request.RouteValues["id"];
+
+                    int id;
+                    if (idRouteValue == null)
+                    {
+                        id = 1;
+                    }
+                    else
+                    {
+                        id = int.Parse(idRouteValue.ToString());
+                    }
+                    if (id == 0)
+                    {
+                        id = 1;
+                    }
+
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            @{
+                                if (id-1 !< 1)
+                                {
+
+                                    <li class="page-item"><a class="page-link disabled text-muted" style="pointer-events: none;">Previous</a></li>
+                                }
+                                else
+                                {
+                                    var prevId = id - 1;
+                                    <li class="page-item "><a class="page-link " asp-action="Index" asp-controller="Home" asp-route-id="@prevId">Previous</a></li>
+                                }
+                            }
+                                
+
+                            
+                            @{
+                                
+                                if (id <= 5)
+                                {
+                                    for (int i = 1; i < id; i++)
+                                    {
+                                        <li class="page-item"><a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@i">@i</a></li>
+                                    }
+                                    
+                                }
+                                else
+                                {
+                                    for (int i = id-5; i < id; i++)
+                                    {
+                                        <li class="page-item"><a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@i">@i</a></li>
+                                    }
+                                }
+                               
+
+                                
+                            }
+
+                            <li class="page-item active"><a class="page-link">@id</a></li>
+                            
+
+                            @{
+                                
+                                if (pageCount -id >= 5)
+                                {
+                                    for (int i = id+1; i < id+5; i++)
+                                    {
+                                        <li class="page-item"><a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@i">@i</a></li>
+                                    }
+                                } 
+                                else
+                                {
+                                    for (int i = id+1; i <= pageCount; i++)
+                                    {
+
+                                        <li class="page-item"><a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@i">@i</a></li>
+                                    }
+                                }
+                                
+                            }
+                            
+                            
+                          
+                           
+                            
+                            @{
+                                if (id < pageCount)
+                                {
+                                    var nextId = id + 1 ;
+                                    <li class="page-item"><a class="page-link"  asp-action="Index" asp-controller="Home" asp-route-id="@nextId">Next</a></li>
+                                }
+                                else
+                                {
+                                    <li class="page-item disabled text-muted" ><a class="page-link " style="pointer-events: none;">Next</a></li>
+                                }
+                            }
+                        </ul>
+                    </nav>
+
+                }
+               
+                
             </div>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12 ">
