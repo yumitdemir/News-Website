@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yjQZpV8sR8WHCLlMUn3yh3X8FuSPaX64IEz3FprUiVo=",
+  "Hash": "moOQnXcVf6FIwkKY9NnaHP+xs+qniiOUqBYLFdfllZg=",
   "Source": "DSS",
   "BasePath": "_content/DSS",
   "Mode": "Default",
@@ -151,6 +151,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\js\\details.js",
+      "SourceId": "DSS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\",
+      "BasePath": "_content/DSS",
+      "RelativePath": "js/details.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\details.js"
     },
     {
       "Identity": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\js\\site.js",

@@ -36,12 +36,12 @@ public class AccountController : Controller
             HttpContext.Session.SetString("username", username);
            
             TempData["loginMessage"] = "Logged in successfully";
-            return RedirectToAction("Index", "Home"); //! important
+            return RedirectToAction("Index", "Home");
         }
         else
         {
-            ViewBag.Message = "Invalid Login";
-            return View();
+            TempData["loginFailedMessage"] = "Incorrect username or password";
+            return RedirectToAction("SignIn");
         }
 
     }
@@ -58,6 +58,7 @@ public class AccountController : Controller
     public IActionResult Logout()
     {
         HttpContext.Session.Remove("username");
+      
         TempData["logoutMessage"] = "Logged out successfully";
         return RedirectToAction("Index", "Home");
     }

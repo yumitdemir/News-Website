@@ -4,25 +4,20 @@
 @model NewsDTO
 
 
-
-
-
-
-
 <link rel="stylesheet" href="css/HomeIndex.css">
 
 <div class="container main-news section ">
     @{
         if (TempData["loginMessage"] != null)
         {
-            <div class="alert alert-success alert-dismissible fade show  "  role="alert">
+            <div class="alert alert-success alert-dismissible fade show  " role="alert">
                 @TempData["loginMessage"]
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         }
         if (TempData["logoutMessage"] != null)
         {
-            <div class="alert alert-danger alert-dismissible fade show  "  role="alert">
+            <div class="alert alert-danger alert-dismissible fade show  " role="alert">
                 @TempData["logoutMessage"]
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
@@ -84,9 +79,8 @@
         @{
             if (Model.allNewsList.Count() != 0)
             {
-
                 foreach (var news in Model.latestNewsList)
-                    {
+                {
                     <div class="col-sm-12  col-md-3 col-lg-3">
                         <div class="card mb-3 border-0">
                             <div class="overlay"></div>
@@ -105,7 +99,7 @@
             {
                 <p class="disabled">No news found</p>
             }
-          
+
         }
 
 
@@ -114,209 +108,227 @@
 
 
 <div class="container section">
-    <div class="row">
-        <div class="col-lg-8 col-md-8 col-sm-12 ">
-            <div class="mb-4 mt-4">
-                <div class="section-title">
-                    <span>All News</span>
-                </div>
-                @{
-                    if (Model.allNewsList.Count() != 0)
-                    {
-                        Console.WriteLine(Model.allNewsList.Count());
-                        foreach (var news in Model.allNewsList)
-                        {
-                            <div class="row mb-3 bb-1 pt-0 all-news-item" onclick="alert('You clicked the div!')">
-                                <div class="col-md-4 col-lg-4 col-sm-12 ">
-                                    <img class="thumb" src="https://letzcricket.com/uploads/news/vGWpKyVU7jHXz5K8.png">
-                                </div>
-                                <div class="col-md-8 col-lg-8 col-sm-12 ">
+<div class="row">
+<div class="col-lg-8 col-md-8 col-sm-12 ">
+    <div class="mb-4 mt-4">
+        <div class="section-title">
+            <span>All News</span>
+        </div>
+        @{
+            if (Model.allNewsList.Count() != 0)
+            {
+                Console.WriteLine(Model.allNewsList.Count());
+                foreach (var news in Model.allNewsList)
+                {
+
+                    <div class="row mb-3 bb-1 pt-0 all-news-item" style="word-wrap: break-word;" onclick="location.href='@Url.Action("Index", "Details", new { newsId = news.Id })';">
+                        <div class="col-md-4 col-lg-4 col-sm-12 ">
+                            <img class="thumb" src="https://letzcricket.com/uploads/news/vGWpKyVU7jHXz5K8.png">
+                        </div>
+                                
+                                <div class="col-md-8 col-lg-8 col-sm-12 d-flex flex-column">
                                     <h5>
-                                        <a href="detail.html">
+                                        
                                             @news.Title
-                                        </a>
+                                        
                                     </h5>
                                     <small>29th August, 2021</small>
-                                    <p class="summary pt-3">@news.Content</p>
+
+                                   
+                                        @news.Content.Substring(0, Math.Min(news.Content.Length, 200))...
+                                    
+
                                 </div>
-                            </div>
-                        }
-                    }
-                    else
-                    {
-                        <p class="disabled">No news found</p>
-                    }
-                   
-                }
-                @{
-
-                    var newsCount = Model.newsCount;
-                    var pageCount = Math.Ceiling(newsCount / 10);
-                    var idRouteValue = Context.Request.RouteValues["id"];
-
-                    int id;
-                    if (idRouteValue == null)
-                    {
-                        id = 1;
-                    }
-                    else
-                    {
-                        id = int.Parse(idRouteValue.ToString());
-                    }
-                    if (id == 0)
-                    {
-                        id = 1;
-                    }
-
-                   
-                        if (Model.allNewsList.Count() != 0)
-                        {
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    @{
-                                        if (id - 1! < 1)
-                                        {
-
-                                            <li class="page-item"><a class="page-link disabled text-muted" style="pointer-events: none;">Previous</a></li>
-                                        }
-                                        else
-                                        {
-                                            var prevId = id - 1;
-                                            <li class="page-item "><a class="page-link " asp-action="Index" asp-controller="Home" asp-route-id="@prevId">Previous</a></li>
-                                        }
-                                    }
-
-
-
-                                    @{
-
-                                        if (id <= 5)
-                                        {
-                                            for (int i = 1; i < id; i++)
-                                            {
-                                                <li class="page-item"><a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@i">@i</a></li>
-                                            }
-
-                                        }
-                                        else
-                                        {
-                                            for (int i = id - 5; i < id; i++)
-                                            {
-                                                <li class="page-item"><a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@i">@i</a></li>
-                                            }
-                                        }
-
-
-
-                                    }
-
-                                    <li class="page-item active"><a class="page-link">@id</a></li>
-
-
-                                    @{
-
-                                        if (pageCount - id >= 5)
-                                        {
-                                            for (int i = id + 1; i < id + 5; i++)
-                                            {
-                                                <li class="page-item"><a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@i">@i</a></li>
-                                            }
-                                        }
-                                        else
-                                        {
-                                            for (int i = id + 1; i <= pageCount; i++)
-                                            {
-
-                                                <li class="page-item"><a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@i">@i</a></li>
-                                            }
-                                        }
-
-                                    }
-
-
-
-
-
-                                    @{
-                                        if (id < pageCount)
-                                        {
-                                            var nextId = id + 1;
-                                            <li class="page-item"><a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@nextId">Next</a></li>
-                                        }
-                                        else
-                                        {
-                                            <li class="page-item disabled text-muted"><a class="page-link " style="pointer-events: none;">Next</a></li>
-                                        }
-                                    }
-                                </ul>
-                            </nav>
-
                             
-                        }
-                    
-                    
-
+                        </div>
+                   
                 }
-               
-                
+            }
+            else
+            {
+                <p class="disabled">No news found</p>
+            }
+
+        }
+        @{
+            var newsCount = Model.newsCount;
+            var pageCount = Math.Ceiling(newsCount / 10);
+            var idRouteValue = Context.Request.RouteValues["id"];
+
+            int id;
+            if (idRouteValue == null)
+            {
+                id = 1;
+            }
+            else
+            {
+                id = int.Parse(idRouteValue.ToString());
+            }
+            if (id == 0)
+            {
+                id = 1;
+            }
+
+
+            if (Model.allNewsList.Count() != 0)
+            {
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        @{
+                            if (id - 1! < 1)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link disabled text-muted" style="pointer-events: none;">Previous</a>
+                                </li>
+                            }
+                            else
+                            {
+                                var prevId = id - 1;
+                                <li class="page-item ">
+                                    <a class="page-link " asp-action="Index" asp-controller="Home" asp-route-id="@prevId">Previous</a>
+                                </li>
+                            }
+                        }
+
+
+
+                        @{
+                            if (id <= 5)
+                            {
+                                for (var i = 1; i < id; i++)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@i">@i</a>
+                                    </li>
+                                }
+                            }
+                            else
+                            {
+                                for (var i = id - 5; i < id; i++)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@i">@i</a>
+                                    </li>
+                                }
+                            }
+
+
+
+                        }
+
+                        <li class="page-item active">
+                            <a class="page-link">@id</a>
+                        </li>
+
+
+                        @{
+                            if (pageCount - id >= 5)
+                            {
+                                for (var i = id + 1; i < id + 5; i++)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@i">@i</a>
+                                    </li>
+                                }
+                            }
+                            else
+                            {
+                                for (var i = id + 1; i <= pageCount; i++)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@i">@i</a>
+                                    </li>
+                                }
+                            }
+
+                        }
+
+
+
+
+
+                        @{
+                            if (id < pageCount)
+                            {
+                                var nextId = id + 1;
+                                <li class="page-item">
+                                    <a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@nextId">Next</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="page-item disabled text-muted">
+                                    <a class="page-link " style="pointer-events: none;">Next</a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </nav>
+            }
+
+
+
+        }
+
+
+    </div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-12 ">
+    <div class="trending mt-4">
+        <div class="section-title">
+            <span>Trending</span>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+                <img class="thumb" src="https://letzcricket.com/uploads/news/Pk9jw3Z9iv8EBLxE.jpg">
+            </div>
+            <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+                <a href="detail.html">
+                    Paras Khadka retires from international cricket
+                </a>
             </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-12 ">
-            <div class="trending mt-4">
-                <div class="section-title">
-                    <span>Trending</span>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-                        <img class="thumb" src="https://letzcricket.com/uploads/news/Pk9jw3Z9iv8EBLxE.jpg">
-                    </div>
-                    <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
-                        <a href="detail.html">
-                            Paras Khadka retires from international cricket
-                        </a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-                        <img class="thumb" src="https://letzcricket.com/uploads/articles/dddNsPXVC6f5bmI5.jpg">
-                    </div>
-                    <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
-                        <a href="detail.html">
-                            Can Rohit be next Sehwag in Indian Test Cricket
-                        </a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-                        <img class="thumb" src="https://letzcricket.com/uploads/news/vGWpKyVU7jHXz5K8.png">
-                    </div>
-                    <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
-                        <a href="detail.html">
-                            India win series despite Sam Curran's Heroics
-                        </a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-                        <img class="thumb" src="https://letzcricket.com/uploads/news/ZqXXlQDeCffne57g.jpg">
-                    </div>
-                    <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
-                        <a href="detail.html">
-                            Domestic Cricket Changing the Face of Nepali Cricket
-                        </a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-                        <img class="thumb" src="https://letzcricket.com/uploads/news/rTv8qzdEizH8HSTE.png">
-                    </div>
-                    <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
-                        <a href="detail.html">
-                            Afridi to play Everest Premier League from Kathmandu Kings
-                        </a>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+                <img class="thumb" src="https://letzcricket.com/uploads/articles/dddNsPXVC6f5bmI5.jpg">
+            </div>
+            <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+                <a href="detail.html">
+                    Can Rohit be next Sehwag in Indian Test Cricket
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+                <img class="thumb" src="https://letzcricket.com/uploads/news/vGWpKyVU7jHXz5K8.png">
+            </div>
+            <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+                <a href="detail.html">
+                    India win series despite Sam Curran's Heroics
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+                <img class="thumb" src="https://letzcricket.com/uploads/news/ZqXXlQDeCffne57g.jpg">
+            </div>
+            <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+                <a href="detail.html">
+                    Domestic Cricket Changing the Face of Nepali Cricket
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+                <img class="thumb" src="https://letzcricket.com/uploads/news/rTv8qzdEizH8HSTE.png">
+            </div>
+            <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+                <a href="detail.html">
+                    Afridi to play Everest Premier League from Kathmandu Kings
+                </a>
             </div>
         </div>
     </div>
+</div>
+</div>
 </div>

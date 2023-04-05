@@ -19,8 +19,9 @@ namespace DSS.Repository.CommentRepository
             _context.SaveChanges();
         }
 
-        public void removeComment(CommentModel comment)
+        public void removeCommentById(int id)
         {
+            var comment = getCommentByIdAsync(id).Result;
             _context.Comments.Remove(comment);
             _context.SaveChanges();
         }

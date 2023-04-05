@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\js\\details.js",
+      "PackagePath": "staticwebassets\\js\\details.js"
+    },
+    {
       "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

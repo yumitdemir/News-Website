@@ -6,7 +6,7 @@ namespace DSS.Repository.CommentRepository
     {
         public void addComment(CommentModel comment);
 
-        public void removeComment(CommentModel comment);
+        public void removeCommentById(int id);
 
         public Task<IEnumerable<CommentModel>> getAllCommentsAsync();
 

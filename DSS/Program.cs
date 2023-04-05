@@ -77,7 +77,11 @@ public class Program
             "News/AddNews",
             new { controller = "News", action = "AddNews" });
 
-       
+        app.MapControllerRoute(
+            "AddNewsRouting",
+            "Account/Logout",
+            new { controller = "Account", action = "Logout" });
+
 
 
         app.Run();
