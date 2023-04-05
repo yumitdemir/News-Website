@@ -20,14 +20,12 @@ public class HomeController : Controller
     public IActionResult Index(int id)
     {
 
-       
-
         var sessionFlag = HttpContext.Session.GetString("username") == null;
         ViewBag.SessionFlag = sessionFlag;
         var dataTransfer = new NewsDTO();
 
         if (id <= 0)
-            id = 1;
+            return RedirectToAction("Index", "Home", new { id = 1 });
 
         var takeStart = (id * 10)-10;
         if (takeStart == 0)
@@ -37,18 +35,20 @@ public class HomeController : Controller
 
         if ( _context.News == null)
         {
-
+            Console.WriteLine("dsadsasda");
             return View(dataTransfer);
         }
         dataTransfer.latestNewsList = _context.News.Take(4).ToList();
         dataTransfer.mainNewsList = _context.News.Take(5).ToList();
         dataTransfer.allNewsList = _context.News.Skip(4).Skip(takeStart).Take(10).ToList();
         dataTransfer.newsCount = _context.News.Skip(4).Count();
-        var pageCount = Math.Ceiling(dataTransfer.newsCount / 10);
-        if (pageCount < id)
-        {
 
-            return Redirect(Url.Content("~/"));
+        
+         var pageCount = Math.Ceiling(dataTransfer.newsCount / 10);
+
+         if (pageCount < id-1 && pageCount == 0)
+        {
+            return RedirectToAction("Index", "Home", new { id = 1 });
         }
 
         return View(dataTransfer);

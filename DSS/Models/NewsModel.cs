@@ -13,12 +13,12 @@ namespace DSS.Models
 
         public string ThumbnailImgUrl { get; set; }
 
-        [ForeignKey("TagId")]
-        public int? TagId { get; set; }
+        //[ForeignKey("TagId")]
+        //public int? TagId { get; set; }
         public virtual TagModel TagModel { get; set; } // navigation prop
 
-        [ForeignKey("AuthorId")]
-        public int? AuthorId { get; set; }
+        //[ForeignKey("AuthorId")]
+        //public int? AuthorId { get; set; }
         public virtual UserModel UserModel { get; set; } // navigation prop
     }
     

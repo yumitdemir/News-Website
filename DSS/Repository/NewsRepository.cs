@@ -25,5 +25,11 @@ namespace DSS.Repository
             _context.SaveChanges();
         }
 
+        public async Task<NewsModel> getNewsById(int newsId)
+        {
+           var news = await  _context.News.FirstOrDefaultAsync(x => x.Id == newsId);
+           return news;
+        }
+
     }
 }

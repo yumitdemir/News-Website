@@ -28,21 +28,21 @@ namespace DSS.Repository.CommentRepository
         public async Task<IEnumerable<CommentModel>> getAllCommentsAsync()
         {
             
-            var allComments = await _context.Comments.Include("UserModel").ToListAsync();
+            var allComments = await _context.Comments.Include("UserModel").Include("NewsModel").ToListAsync();
 
             return allComments;
         }
 
         public async Task<CommentModel> getCommentByIdAsync(int commentId)
         {
-            var comment = await _context.Comments.Include("UserModel").FirstOrDefaultAsync(x=> x.Id == commentId);
+            var comment = await _context.Comments.Include("UserModel").Include("NewsModel").FirstOrDefaultAsync(x=> x.Id == commentId);
 
             return comment;
         }
 
-        public async Task<IEnumerable<CommentModel>> getCommentsByNewsId(int newsId)
+        public async Task<IEnumerable<CommentModel>> getCommentsByNewsIdAsync(int newsId)
         {
-            var commentList = await _context.Comments.Include("UserModel").Include("NewsModel").Where(x => x.NewsId == newsId).ToListAsync();
+            var commentList = await _context.Comments.Include("UserModel").Include("NewsModel").Where(x => x.NewsModel.Id == newsId).ToListAsync();
 
             return commentList;
 

@@ -12,7 +12,7 @@ namespace DSS.Repository.CommentRepository
 
         public Task<CommentModel> getCommentByIdAsync(int commentId);
 
-        public Task<IEnumerable<CommentModel>> getCommentsByNewsId(int newsId);
+        public Task<IEnumerable<CommentModel>> getCommentsByNewsIdAsync(int newsId);
 
     }
 }

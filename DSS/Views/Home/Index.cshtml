@@ -33,7 +33,7 @@
             <div class="card position-relative news-card mb-4">
                 <div class="overlay"></div>
                 <img src="https://letzcricket.com/uploads/news/ZqXXlQDeCffne57g.jpg" class=" card-img-top thumb" alt="...">
-                <h3 class="card-title position-absolute w-100 text-light card-title-inside-img">@* @Model.allNewsList[0].Title*@</h3>
+                <h3 class="card-title position-absolute w-100 text-light card-title-inside-img"> @Model.allNewsList.Count()</h3>
             </div>
 
 
@@ -168,85 +168,93 @@
                         id = 1;
                     }
 
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            @{
-                                if (id-1 !< 1)
-                                {
+                   
+                        if (Model.allNewsList.Count() != 0)
+                        {
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    @{
+                                        if (id - 1! < 1)
+                                        {
 
-                                    <li class="page-item"><a class="page-link disabled text-muted" style="pointer-events: none;">Previous</a></li>
-                                }
-                                else
-                                {
-                                    var prevId = id - 1;
-                                    <li class="page-item "><a class="page-link " asp-action="Index" asp-controller="Home" asp-route-id="@prevId">Previous</a></li>
-                                }
-                            }
-                                
-
-                            
-                            @{
-                                
-                                if (id <= 5)
-                                {
-                                    for (int i = 1; i < id; i++)
-                                    {
-                                        <li class="page-item"><a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@i">@i</a></li>
+                                            <li class="page-item"><a class="page-link disabled text-muted" style="pointer-events: none;">Previous</a></li>
+                                        }
+                                        else
+                                        {
+                                            var prevId = id - 1;
+                                            <li class="page-item "><a class="page-link " asp-action="Index" asp-controller="Home" asp-route-id="@prevId">Previous</a></li>
+                                        }
                                     }
-                                    
-                                }
-                                else
-                                {
-                                    for (int i = id-5; i < id; i++)
-                                    {
-                                        <li class="page-item"><a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@i">@i</a></li>
+
+
+
+                                    @{
+
+                                        if (id <= 5)
+                                        {
+                                            for (int i = 1; i < id; i++)
+                                            {
+                                                <li class="page-item"><a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@i">@i</a></li>
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            for (int i = id - 5; i < id; i++)
+                                            {
+                                                <li class="page-item"><a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@i">@i</a></li>
+                                            }
+                                        }
+
+
+
                                     }
-                                }
-                               
 
-                                
-                            }
+                                    <li class="page-item active"><a class="page-link">@id</a></li>
 
-                            <li class="page-item active"><a class="page-link">@id</a></li>
-                            
 
-                            @{
-                                
-                                if (pageCount -id >= 5)
-                                {
-                                    for (int i = id+1; i < id+5; i++)
-                                    {
-                                        <li class="page-item"><a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@i">@i</a></li>
+                                    @{
+
+                                        if (pageCount - id >= 5)
+                                        {
+                                            for (int i = id + 1; i < id + 5; i++)
+                                            {
+                                                <li class="page-item"><a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@i">@i</a></li>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            for (int i = id + 1; i <= pageCount; i++)
+                                            {
+
+                                                <li class="page-item"><a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@i">@i</a></li>
+                                            }
+                                        }
+
                                     }
-                                } 
-                                else
-                                {
-                                    for (int i = id+1; i <= pageCount; i++)
-                                    {
 
-                                        <li class="page-item"><a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@i">@i</a></li>
+
+
+
+
+                                    @{
+                                        if (id < pageCount)
+                                        {
+                                            var nextId = id + 1;
+                                            <li class="page-item"><a class="page-link" asp-action="Index" asp-controller="Home" asp-route-id="@nextId">Next</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li class="page-item disabled text-muted"><a class="page-link " style="pointer-events: none;">Next</a></li>
+                                        }
                                     }
-                                }
-                                
-                            }
+                                </ul>
+                            </nav>
+
                             
-                            
-                          
-                           
-                            
-                            @{
-                                if (id < pageCount)
-                                {
-                                    var nextId = id + 1 ;
-                                    <li class="page-item"><a class="page-link"  asp-action="Index" asp-controller="Home" asp-route-id="@nextId">Next</a></li>
-                                }
-                                else
-                                {
-                                    <li class="page-item disabled text-muted" ><a class="page-link " style="pointer-events: none;">Next</a></li>
-                                }
-                            }
-                        </ul>
-                    </nav>
+                        }
+                    
+                    
 
                 }
                

@@ -7,5 +7,7 @@
 
         public IEnumerable<CommentModel> comments { get; set; }
 
+        public UserModel? currentUser { get; set; }
+
     }
 }

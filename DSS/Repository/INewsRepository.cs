@@ -6,7 +6,7 @@ namespace DSS.Repository
     {
         public void SaveNews(NewsModel news);
         public void RemoveNews(NewsModel news);
-
+        public Task<NewsModel> getNewsById(int newsId);
 
     }
 }
