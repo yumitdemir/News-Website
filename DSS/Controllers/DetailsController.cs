@@ -15,6 +15,7 @@ public class DetailsController : Controller
     private readonly ICommentRepository _commentRepository;
     private readonly IAccountRepository _accountRepository;
     private readonly INewsRepository _newsRepository;
+    
 
     public DetailsController(INewsRepository newsRepository, IDetailRepository detailRepository,
         ICommentRepository commentRepository, IAccountRepository accountRepository)
@@ -27,11 +28,23 @@ public class DetailsController : Controller
 
     public async Task<IActionResult> Index(int newsId)
     {
+        var sessionFlag = HttpContext?.Session?.GetString("username") == null;
+        ViewBag.SessionFlag = sessionFlag;
+
+        var isNewsNull = await _newsRepository.getNewsById(newsId);
+        if (isNewsNull == null)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
+      
+
         var news = await _detailRepository.GetByIdAsync(newsId);
 
         var detailDto = new DetailDTO();
         detailDto.news = news;
-        detailDto.comments = _commentRepository.getCommentsByNewsIdAsync(newsId).Result;
+        var comments = await _commentRepository.getCommentsByNewsIdAsync(newsId);
+        detailDto.comments = comments.Reverse();
         detailDto.currentUser = _accountRepository.getSesionUser(HttpContext.Session.GetString("username"))?.Result;
 
 
@@ -59,14 +72,24 @@ public class DetailsController : Controller
     [Route("details/{currentUsername}/comments/remove/{id}")]
     public IActionResult removeComment(int id, string currentUsername)
     {
-        Console.WriteLine(currentUsername);
-        Console.WriteLine(currentUsername);
-        Console.WriteLine(HttpContext.Session.GetString("username"));
-        Console.WriteLine(HttpContext.Session.GetString("username"));
+        
         if (HttpContext.Session.GetString("username") != currentUsername)
             return new JsonResult(new { status = "unsuccessful" });
 
         _commentRepository.removeCommentById(id);
+
+        var result = new { status = "success" };
+        return new JsonResult(result);
+    }
+
+    [HttpPost]
+    [Route("details/{currentUsername}/news/remove/{id}")]
+    public IActionResult removeNews(int id, string currentUsername)
+    {
+        if (HttpContext.Session.GetString("username") != currentUsername)
+            return new JsonResult(new { status = "unsuccessful" });
+
+        _newsRepository.RemoveNewsById(id);
 
         var result = new { status = "success" };
         return new JsonResult(result);

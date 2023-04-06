@@ -1,5 +1,6 @@
-﻿
+﻿@model NewsModel
 
+<link href="~/css/addnews.css" rel="stylesheet" />
 
 <div class="vh-100 d-flex justify-content-center align-items-center">
     <div class="container">
@@ -10,24 +11,30 @@
                 <div class="card bg-white">
                     <div class="card-body p-5">
 
-                        <form class="mb-3 mt-md-4" method="post" asp-controller="News" asp-action="AddNews">
+                        <form class="mb-3 mt-md-4" method="post" asp-controller="News" asp-action="AddNews" enctype="multipart/form-data">
 
                             <div class="mb-3">
                                 <label for="title" class="form-label ">Title</label>
-                                <input type="text" class="form-control" id="title" placeholder="title" name="Title">
+                                <input type="text" class="form-control" id="title" placeholder="title" name="Title" value="@Model.Title">
+                                @Html.ValidationMessageFor(model => model.Title ,"", new { @class = "error-message" })
                             </div>
                             <div class="mb-3">
                                 <label for="Content" class="form-label ">Content</label>
                                 
-                                <textarea class="form-control" id="Content" placeholder="contnet" name="Content" rows="4" cols="20" wrap="hard"></textarea>
+                                <textarea class="form-control" id="Content" placeholder="contnet" name="Content" rows="4" cols="20" wrap="hard" value="@Model.Content"></textarea>
+                                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "error-message" })
                             </div>
-                            <div class="mb-3">
-                                <label for="ThumbnailImgUrl" class="form-label ">ThumbnailImgUrl</label>
-                                <input type="text" class="form-control" id="ThumbnailImgUrl" placeholder="ThumbnailImgUrl" name="ThumbnailImgUrl">
+                        
+                            <div>
+                                <label for="ThumbnailImg" class="form-label ">Thumbnail Img</label>
+                                <input class="form-control" type="file" name="thumbnailImg" id="ThumbnailImg" />
+                                @Html.ValidationMessageFor(model => model.ThumbnailImgUrl ,"", new { @class = "error-message" })
                             </div>
+
                             <div class="mb-3">
-                                <label for="Tags" class="form-label ">Tags</label>
-                                <input type="text" class="form-control" id="Tags" placeholder="Tags" name="Tag">
+                                <label for="Tags" class="form-label">Tags</label>
+                                <input type="text" class="form-control" id="Tags" placeholder="Tags" name="Tag" value="@Model?.TagModel?.Name">
+                                @Html.ValidationMessageFor(model => model.TagModel,"", new { @class = "error-message" })
                             </div>
 
                             <div class="d-grid">

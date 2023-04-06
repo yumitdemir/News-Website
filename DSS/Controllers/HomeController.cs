@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using DSS.Data;
+using DSS.Repository;
+using System;
+using DSS.Service.HomeService;
 
 
 namespace DSS.Controllers;
@@ -10,46 +13,49 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly ApplicationDBContext _context;
+    private readonly INewsRepository _newsRepository;
+    private readonly IHomeService _homeService;
 
-    public HomeController(ILogger<HomeController> logger, ApplicationDBContext context)
+    public HomeController(ILogger<HomeController> logger, ApplicationDBContext context, INewsRepository newsRepository,IHomeService homeService)
     {
+        _homeService = homeService;
         _context = context;
         _logger = logger;
+        _newsRepository = newsRepository;
     }
 
-    public IActionResult Index(int id)
+    public async Task<IActionResult> Index(int id)
     {
+        
 
         var sessionFlag = HttpContext.Session.GetString("username") == null;
         ViewBag.SessionFlag = sessionFlag;
+
+
+
+
+        var takeStart = id * 10 - 10;
+        if (takeStart == 0) takeStart = 0;
+
+        
+        IEnumerable<NewsModel?> newsList = await _newsRepository.getAllNewsAsync();
         var dataTransfer = new NewsDTO();
+        dataTransfer.latestNewsList = newsList.Reverse().Take(4).ToList();
+        dataTransfer.mainNewsList = _homeService.getMainNewsList(newsList.ToList());
+        dataTransfer.allNewsList = newsList.Reverse().Skip(4).Skip(takeStart).Take(10).ToList();
+        dataTransfer.newsCount = newsList.Reverse().Skip(4).Count();
+
+        var pageCount = Math.Ceiling(dataTransfer.newsCount / 10);
+
+
+
 
         if (id <= 0)
             return RedirectToAction("Index", "Home", new { id = 1 });
 
-        var takeStart = (id * 10)-10;
-        if (takeStart == 0)
-        {
-            takeStart = 0;
-        }
+        if (id > pageCount && id != 1)
+            return RedirectToAction("Index", "Home", new { id = pageCount });
 
-        if ( _context.News == null)
-        {
-            Console.WriteLine("dsadsasda");
-            return View(dataTransfer);
-        }
-        dataTransfer.latestNewsList = _context.News.Take(4).ToList();
-        dataTransfer.mainNewsList = _context.News.Take(5).ToList();
-        dataTransfer.allNewsList = _context.News.Skip(4).Skip(takeStart).Take(10).ToList();
-        dataTransfer.newsCount = _context.News.Skip(4).Count();
-
-        
-         var pageCount = Math.Ceiling(dataTransfer.newsCount / 10);
-
-         if (pageCount < id-1 && pageCount == 0)
-        {
-            return RedirectToAction("Index", "Home", new { id = 1 });
-        }
 
         return View(dataTransfer);
     }

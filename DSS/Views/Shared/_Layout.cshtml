@@ -53,7 +53,7 @@
                        
                         
                     @{
-                        if (ViewBag.SessionFlag != true)
+                        if (ViewBag.SessionFlag == false)
                         {
                                 <li> <a asp-action="AddNews" asp-controller="News"><img class="add-news-btn me-2" src="/Content/plus-circle.svg" alt="add"> </a></li>
                         }

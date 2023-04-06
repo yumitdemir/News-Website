@@ -19,16 +19,23 @@ namespace DSS.Repository
             _context.SaveChanges();
         }
 
-        public void RemoveNews(NewsModel news)
+        public void RemoveNewsById(int id)
         {
-            _context.News.Add(news);
+            var news = getNewsById(id).Result;
+            _context.News.Remove(news);
             _context.SaveChanges();
         }
 
-        public async Task<NewsModel> getNewsById(int newsId)
+        public async Task<NewsModel?> getNewsById(int newsId)
         {
            var news = await  _context.News.FirstOrDefaultAsync(x => x.Id == newsId);
            return news;
+        }
+
+        public async Task<IEnumerable<NewsModel?>> getAllNewsAsync()
+        {
+            var newsList = await _context.News.ToListAsync();
+            return newsList;
         }
 
     }

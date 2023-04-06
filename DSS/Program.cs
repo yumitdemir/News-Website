@@ -4,7 +4,10 @@ using DSS.Repository;
 using DSS.Repository.CommentRepository;
 using DSS.Repository.Detail;
 using DSS.Repository.Sessions;
+using DSS.Repository.TagsRepository;
 using DSS.Repository.UserRepository;
+using DSS.Service.HomeService;
+using DSS.Service.NewsService;
 using Microsoft.EntityFrameworkCore;
 
 namespace DSS;
@@ -23,7 +26,9 @@ public class Program
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IDetailRepository, DetailRepository>();
         builder.Services.AddScoped<ICommentRepository, CommentRepository>();
-
+        builder.Services.AddScoped<ITagRepository, TagRepository>();
+        builder.Services.AddScoped<INewsService, NewsService>();
+        builder.Services.AddScoped<IHomeService, HomeService>();
 
         builder.Services.AddDbContext<ApplicationDBContext>(options => //! db context service
         {

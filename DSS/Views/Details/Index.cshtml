@@ -8,11 +8,26 @@
 <div class="row align-items-start">
 <div class="col-lg-8">
     <article class="article box-shadow">
-        <div class="mb-4">
-            <img src="https://www.bootdey.com/image/800x350/87CEFA/000000" style="width: 100%;">
-        </div>
 
-        <h2 class="mb-2">@Model.news.Title</h2>
+        @{
+            if (@Model.news.ThumbnailImgUrl != null)
+            {
+                <div class="mb-4">
+                    <img src="@Model.news.ThumbnailImgUrl" style="width: 100%;">
+                </div>
+            }
+        }
+
+
+        <h2 class="mb-2">
+            @Model?.news.Title
+            @{
+                if (Model.currentUser?.Id == Model.news.UserModel.Id)
+                {
+                    <button class="btn btn-danger" onclick="removeNews(@Model.news?.Id, '@Model.news.UserModel.Username')">Delete</button>
+                }
+            }
+        </h2>
 
 
         <div class="article-content">

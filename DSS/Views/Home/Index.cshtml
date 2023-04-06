@@ -4,6 +4,7 @@
 @model NewsDTO
 
 
+
 <link rel="stylesheet" href="css/HomeIndex.css">
 
 <div class="container main-news section ">
@@ -22,13 +23,20 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         }
+        if (TempData["addNewsMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show  " role="alert">
+                @TempData["addNewsMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
     }
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-6">
             <div class="card position-relative news-card mb-4">
                 <div class="overlay"></div>
                 <img src="https://letzcricket.com/uploads/news/ZqXXlQDeCffne57g.jpg" class=" card-img-top thumb" alt="...">
-                <h3 class="card-title position-absolute w-100 text-light card-title-inside-img"> @Model.allNewsList.Count()</h3>
+                <h3 class="card-title position-absolute w-100 text-light card-title-inside-img"> @Model?.mainNewsList[0]?.Title</h3>
             </div>
 
 
@@ -38,12 +46,12 @@
             <div class="row  ">
                 <div class="col-md-6 col-sm-12  col-lg-6">
                     @{
-                        for (var i = 0; i < 2; i++)
+                        for (var i = 1; i < 3; i++)
                         {
                             <div class="card position-relative news-card mb-4">
                                 <div class="overlay"></div>
                                 <img src="https://letzcricket.com/uploads/news/Pk9jw3Z9iv8EBLxE.jpg" class="card-img-top thumb" alt="...">
-                                <h5 class="card-title position-absolute w-100 text-light card-title-inside-img">Paras Khadka retires from international cricket</h5>
+                                <h5 class="card-title position-absolute w-100 text-light card-title-inside-img">@Model?.mainNewsList[i]?.Title</h5>
                             </div>
                         }
                     }
@@ -52,12 +60,12 @@
 
                 <div class="col-md-6 col-sm-12  col-lg-6">
                     @{
-                        for (var i = 2; i < 4; i++)
+                        for (var i = 3; i < 5; i++)
                         {
                             <div class="card position-relative news-card mb-4">
                                 <div class="overlay"></div>
                                 <img src="https://letzcricket.com/uploads/news/Pk9jw3Z9iv8EBLxE.jpg" class="card-img-top thumb" alt="...">
-                                <h5 class="card-title position-absolute w-100 text-light card-title-inside-img">Paras Khadka retires from international cricket</h5>
+                                <h5 class="card-title position-absolute w-100 text-light card-title-inside-img">@Model?.mainNewsList[i]?.Title</h5>
                             </div>
                         }
                     }
@@ -77,7 +85,7 @@
 
 
         @{
-            if (Model.allNewsList.Count() != 0)
+            if (Model.latestNewsList.Count() != 0)
             {
                 foreach (var news in Model.latestNewsList)
                 {
@@ -88,7 +96,7 @@
                             <div class="card-body">
                                 <h5 class="card-title text-white">@news.Title</h5>
                                 <p class="card-text">
-                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                    <small class="text-muted">@news.</small>
                                 </p>
                             </div>
                         </div>
