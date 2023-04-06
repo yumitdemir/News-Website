@@ -47,6 +47,8 @@ public class DetailsController : Controller
         detailDto.comments = comments.Reverse();
         detailDto.currentUser = _accountRepository.getSesionUser(HttpContext.Session.GetString("username"))?.Result;
 
+       
+
 
         return View(detailDto);
     }

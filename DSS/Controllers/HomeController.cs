@@ -4,6 +4,7 @@ using System.Diagnostics;
 using DSS.Data;
 using DSS.Repository;
 using System;
+using DSS.Repository.CommentRepository;
 using DSS.Service.HomeService;
 
 
@@ -15,9 +16,11 @@ public class HomeController : Controller
     private readonly ApplicationDBContext _context;
     private readonly INewsRepository _newsRepository;
     private readonly IHomeService _homeService;
+    private readonly ICommentRepository _commentRepository;
 
-    public HomeController(ILogger<HomeController> logger, ApplicationDBContext context, INewsRepository newsRepository,IHomeService homeService)
+    public HomeController(ILogger<HomeController> logger, ApplicationDBContext context, INewsRepository newsRepository,IHomeService homeService,ICommentRepository commentRepository)
     {
+        _commentRepository = commentRepository;
         _homeService = homeService;
         _context = context;
         _logger = logger;
@@ -36,9 +39,22 @@ public class HomeController : Controller
 
         var takeStart = id * 10 - 10;
         if (takeStart == 0) takeStart = 0;
+        IEnumerable<NewsModel?> newsList = await _newsRepository.getAllNewsAsync();
+
+        foreach (var news in newsList)
+        {
+          IEnumerable<CommentModel>? Commnets =  await _commentRepository.getCommentsByNewsIdAsync(news.Id);
+          int count = (Commnets != null) ? Commnets.Count() : 0;
+          NewsCommentCountDTO newsWithCommentsCount = new NewsCommentCountDTO();
+          newsWithCommentsCount.commentCount = count;
+          newsWithCommentsCount.news = news;
+        }
+       
 
         
-        IEnumerable<NewsModel?> newsList = await _newsRepository.getAllNewsAsync();
+
+        
+  
         var dataTransfer = new NewsDTO();
         dataTransfer.latestNewsList = newsList.Reverse().Take(4).ToList();
         dataTransfer.mainNewsList = _homeService.getMainNewsList(newsList.ToList());
@@ -55,6 +71,9 @@ public class HomeController : Controller
 
         if (id > pageCount && id != 1)
             return RedirectToAction("Index", "Home", new { id = pageCount });
+
+
+        
 
 
         return View(dataTransfer);

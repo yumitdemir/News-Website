@@ -49,5 +49,14 @@ namespace DSS.Repository.CommentRepository
 
         }
 
+        public async Task<int> getCommentsCountByNewsIdAsync(int newsId)
+        {
+            var commentList = await _context.Comments.Include("UserModel").Include("NewsModel").Where(x => x.NewsModel.Id == newsId).ToListAsync();
+            var commentCount = commentList.Count();
+
+            return commentCount;
+
+        }
+
     }
 }
