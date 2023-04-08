@@ -8,5 +8,6 @@ namespace DSS.Repository
         public void RemoveNewsById(int id);
         public Task<NewsModel?> getNewsById(int newsId);
         public Task<IEnumerable<NewsModel?>> getAllNewsAsync();
+        public void RemoveNewsByNewsModel(NewsModel news);
     }
 }

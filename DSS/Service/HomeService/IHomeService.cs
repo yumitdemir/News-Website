@@ -4,6 +4,6 @@ namespace DSS.Service.HomeService
 {
     public interface IHomeService
     {
-        public List<NewsModel>? getMainNewsList(List<NewsModel> allNews);
+        public Task<List<NewsCommentCountDTO>> getMainNewsListWithCountAsync(List<NewsCommentCountDTO> allNews);
     }
 }

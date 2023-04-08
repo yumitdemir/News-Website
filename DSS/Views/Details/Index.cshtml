@@ -24,7 +24,7 @@
             @{
                 if (Model.currentUser?.Id == Model.news.UserModel.Id)
                 {
-                    <button class="btn btn-danger" onclick="removeNews(@Model.news?.Id, '@Model.news.UserModel.Username')">Delete</button>
+                    <button class="btn btn-danger" onclick="removeNews(@Model.news?.Id, '@Model.currentUser.Username')">Delete</button>
                 }
             }
         </h2>

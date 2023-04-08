@@ -5,10 +5,10 @@
 @model NewsDTO
 
 
-
 <link rel="stylesheet" href="css/HomeIndex.css">
 
 <div class="container main-news section ">
+    
     @{
         if (TempData["loginMessage"] != null)
         {
@@ -32,13 +32,44 @@
             </div>
         }
     }
-    <div class="row">
+    <div class="section-title">
+        <span>Editor's Picks</span>
+    </div>
+    <div class="row align-items-center">
         <div class="col-sm-12 col-md-6 col-lg-6">
-            <div class="card position-relative news-card mb-4">
-                <div class="overlay"></div>
-                <img src="https://letzcricket.com/uploads/news/ZqXXlQDeCffne57g.jpg" class=" card-img-top thumb" alt="...">
-                <h3 class="card-title position-absolute w-100 text-light card-title-inside-img"> @Model?.mainNewsList[0]?.Title</h3>
-            </div>
+
+            @{
+                if (@Model?.mainNewsList.Count != 0)
+                {
+                    <div class="card position-relative news-card mb-4" onclick="location.href='@Url.Action("Index", "Details", new { newsId = @Model?.mainNewsList[0]?.news.Id })';">
+                        <div class="overlay"></div>
+                        @{
+                            if (@Model?.mainNewsList[0]?.news.ThumbnailImgUrl != null)
+                            {
+                                <img src="@Model?.mainNewsList[0]?.news.ThumbnailImgUrl" class=" card-img-top thumb" alt="...">
+                            }
+                  
+                            else{
+                                <img src="Content/News.jpg" class=" card-img-top thumb" alt="...">
+                        
+                            }
+                        }
+
+                        <h2 class="card-title position-absolute w-100 text-light card-title-inside-img">
+                            @Model?.mainNewsList[0]?.news.Title <br/> <small class="text-white-50" style="font-size: 0.5em;">@Model?.mainNewsList[0]?.commentCount Comments</small>
+                        </h2>
+
+                    </div>
+                }
+                else
+                {
+                    <p class="disabled">No news found</p>
+                }
+                
+               
+
+            }
+
 
 
         </div>
@@ -47,27 +78,74 @@
             <div class="row  ">
                 <div class="col-md-6 col-sm-12  col-lg-6">
                     @{
-                        for (var i = 1; i < 3; i++)
+                        if (@Model?.mainNewsList.Count != 0)
                         {
-                            <div class="card position-relative news-card mb-4">
-                                <div class="overlay"></div>
-                                <img src="https://letzcricket.com/uploads/news/Pk9jw3Z9iv8EBLxE.jpg" class="card-img-top thumb" alt="...">
-                                <h5 class="card-title position-absolute w-100 text-light card-title-inside-img">@Model?.mainNewsList[i]?.Title</h5>
-                            </div>
+                            int itemsToRender = Math.Min(Model?.mainNewsList?.Count ?? 0, 2);
+
+                            for (var i = 1; i < itemsToRender; i++)
+                            {
+                              
+                                if (@Model?.mainNewsList[i]?.news.ThumbnailImgUrl != null)
+                                {
+                                    <div class="card position-relative news-card mb-4" onclick="location.href='@Url.Action("Index", "Details", new { newsId = @Model?.mainNewsList[i]?.news.Id })';">
+                                        <div class="overlay"></div>
+                                        <img src="@Model?.mainNewsList[i]?.news.ThumbnailImgUrl" class="card-img-top thumb" alt="...">
+                                        <h5 class="card-title position-absolute w-100 text-light card-title-inside-img">
+                                            @Model?.mainNewsList[i]?.news.Title <br/> <small class="text-white-50" style="font-size: 0.5em;">@Model?.mainNewsList[0]?.commentCount Comments</small>
+                                        </h5>
+
+                                    </div>
+                                }  else
+                                {
+                                <div class="card position-relative news-card mb-4" onclick="location.href='@Url.Action("Index", "Details", new { newsId = @Model?.mainNewsList[i]?.news.Id })';">
+                                    <div class="overlay"></div>
+                                    <img src="Content/News.jpg" class="card-img-top thumb" alt="...">
+                                    <h5 class="card-title position-absolute w-100 text-light card-title-inside-img">
+                                        @Model?.mainNewsList[i]?.news.Title <br /> <small class="text-white-50" style="font-size: 0.5em;">@Model?.mainNewsList[0]?.commentCount Comments</small>
+                                    </h5>
+
+                                </div>
+                                }
+                            }
+                        
                         }
+                        
                     }
 
                 </div>
 
                 <div class="col-md-6 col-sm-12  col-lg-6">
                     @{
-                        for (var i = 3; i < 5; i++)
+                        if (@Model?.mainNewsList.Count != 0)
                         {
-                            <div class="card position-relative news-card mb-4">
-                                <div class="overlay"></div>
-                                <img src="https://letzcricket.com/uploads/news/Pk9jw3Z9iv8EBLxE.jpg" class="card-img-top thumb" alt="...">
-                                <h5 class="card-title position-absolute w-100 text-light card-title-inside-img">@Model?.mainNewsList[i]?.Title</h5>
-                            </div>
+
+                            for (var i = 3; i < Math.Min(Model.mainNewsList.Count, 5); i++)
+                        {
+                                if (i < Model.mainNewsList.Count && Model.mainNewsList[i].news.ThumbnailImgUrl != null)
+                            {
+                                
+                          
+                                <div class="card position-relative news-card mb-4" onclick="location.href='@Url.Action("Index", "Details", new { newsId = @Model?.mainNewsList[i]?.news.Id })';">
+                                    <div class="overlay"></div>
+                                    <img src="@Model?.mainNewsList[i]?.news.ThumbnailImgUrl" class="card-img-top thumb" alt="...">
+                                    <h5 class="card-title position-absolute w-100 text-light card-title-inside-img">
+                                        @Model?.mainNewsList[i]?.news.Title <br/> <small class="text-white-50" style="font-size: 0.5em;">@Model?.mainNewsList[0]?.commentCount Comments</small>
+                                    </h5>
+
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="card position-relative news-card mb-4" onclick="location.href='@Url.Action("Index", "Details", new { newsId = @Model?.mainNewsList[i]?.news.Id })';">
+                                    <div class="overlay"></div>
+                                    <img src="Content/News.jpg" class="card-img-top thumb" alt="...">
+                                    <h5 class="card-title position-absolute w-100 text-light card-title-inside-img">
+                                        @Model?.mainNewsList[i]?.news.Title <br/> <small class="text-white-50" style="font-size: 0.5em;">@Model?.mainNewsList[0]?.commentCount Comments</small>
+                                    </h5>
+
+                                </div>
+                            }
+                        }
                         }
                     }
 
@@ -82,7 +160,7 @@
     <div class="section-title">
         <span>Latest Headlines</span>
     </div>
-    <div class="row">
+    <div class="row align-items-center">
 
 
         @{
@@ -90,14 +168,24 @@
             {
                 foreach (var news in Model.latestNewsList)
                 {
-                    <div class="col-sm-12  col-md-3 col-lg-3">
+                    <div class="col-sm-12  col-md-3 col-lg-3" onclick="location.href='@Url.Action("Index", "Details", new { newsId = news.news.Id })';">
                         <div class="card mb-3 border-0">
                             <div class="overlay"></div>
-                            <img src="https://letzcricket.com/uploads/news/zXhIbjMmry4D2Sup.png" class="card-img-top" alt="...">
+                            @{
+                                if (news.news.ThumbnailImgUrl != null)
+                                {
+                                    <img src="@news.news.ThumbnailImgUrl" class="card-img-top" alt="...">
+                                }
+                                else
+                                {
+                                    <img src="/Content/News.jpg" class="card-img-top" alt="...">
+                                }
+                            }
+                            
                             <div class="card-body">
-                                <h5 class="card-title text-white">@news.Title</h5>
+                                <h5 class="card-title text-white">@news.news.Title</h5>
                                 <p class="card-text">
-                                    <small class="text-muted"></small>
+                                    <small class="text-white-50" style="font-size: 0.7em;">@news.commentCount Comments</small>
                                 </p>
                             </div>
                         </div>
@@ -129,28 +217,49 @@
                 Console.WriteLine(Model.allNewsList.Count());
                 foreach (var news in Model.allNewsList)
                 {
+                    <div class="row mb-3 bb-1 pt-0 all-news-item border-4" style="word-wrap: break-word;" onclick="location.href='@Url.Action("Index", "Details", new { newsId = news.news.Id })';">
+                        @{
+                            if (news.news.ThumbnailImgUrl != null)
+                            {
+                                <div class="col-md-4 col-lg-4 col-sm-12 ">
 
-                    <div class="row mb-3 bb-1 pt-0 all-news-item" style="word-wrap: break-word;" onclick="location.href='@Url.Action("Index", "Details", new { newsId = news.Id })';">
-                        <div class="col-md-4 col-lg-4 col-sm-12 ">
-                            <img class="thumb" src="https://letzcricket.com/uploads/news/vGWpKyVU7jHXz5K8.png">
-                        </div>
-                                
+                                    <img class="thumb" src="@news.news.ThumbnailImgUrl">
+                                </div>
+
                                 <div class="col-md-8 col-lg-8 col-sm-12 d-flex flex-column">
                                     <h5>
-                                        
-                                            @news.Title
-                                        
-                                    </h5>
-                                    <small>29th August, 2021</small>
 
-                                   
-                                        @news.Content.Substring(0, Math.Min(news.Content.Length, 200))...
-                                    
+                                        @news.news.Title
+
+                                    </h5>
+                                    <small> @news.commentCount Comments</small>
+
+
+                                    @news.news.Content.Substring(0, Math.Min(news.news.Content.Length, 200))...
+
 
                                 </div>
-                            
-                        </div>
-                   
+                            }
+                            else
+                            {
+                                <div class="col-12  d-flex flex-column">
+                                    <h5>
+
+                                        @news.news.Title
+
+                                    </h5>
+                                    <small> @news.commentCount Comments</small>
+
+
+                                    @news.news.Content.Substring(0, Math.Min(news.news.Content.Length, 200))...
+
+
+                                </div>
+                            }
+                        }
+
+
+                    </div>
                 }
             }
             else

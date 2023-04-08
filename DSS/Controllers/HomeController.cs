@@ -40,7 +40,8 @@ public class HomeController : Controller
         var takeStart = id * 10 - 10;
         if (takeStart == 0) takeStart = 0;
         IEnumerable<NewsModel?> newsList = await _newsRepository.getAllNewsAsync();
-
+        newsList = newsList.Reverse();
+        List< NewsCommentCountDTO > newsAndCommentsList = new List< NewsCommentCountDTO >();
         foreach (var news in newsList)
         {
           IEnumerable<CommentModel>? Commnets =  await _commentRepository.getCommentsByNewsIdAsync(news.Id);
@@ -48,18 +49,19 @@ public class HomeController : Controller
           NewsCommentCountDTO newsWithCommentsCount = new NewsCommentCountDTO();
           newsWithCommentsCount.commentCount = count;
           newsWithCommentsCount.news = news;
+          newsAndCommentsList.Add(newsWithCommentsCount);
         }
        
 
         
 
-        
-  
+
+
         var dataTransfer = new NewsDTO();
-        dataTransfer.latestNewsList = newsList.Reverse().Take(4).ToList();
-        dataTransfer.mainNewsList = _homeService.getMainNewsList(newsList.ToList());
-        dataTransfer.allNewsList = newsList.Reverse().Skip(4).Skip(takeStart).Take(10).ToList();
-        dataTransfer.newsCount = newsList.Reverse().Skip(4).Count();
+        dataTransfer.latestNewsList = newsAndCommentsList.Take(4).ToList();
+        dataTransfer.mainNewsList = await _homeService.getMainNewsListWithCountAsync(newsAndCommentsList);
+        dataTransfer.allNewsList = newsAndCommentsList.Skip(4).Skip(takeStart).Take(10).ToList();
+        dataTransfer.newsCount = newsAndCommentsList.Skip(4).Count();
 
         var pageCount = Math.Ceiling(dataTransfer.newsCount / 10);
 

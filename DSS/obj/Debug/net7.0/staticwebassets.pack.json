@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\DSS.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\08cd7b41-6fc6-4acb-a7c6-d438dbd12c41.jpg",
+      "PackagePath": "staticwebassets\\Content\\08cd7b41-6fc6-4acb-a7c6-d438dbd12c41.jpg"
+    },
+    {
       "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\0a6d3fed-b2e1-4365-9cac-f0484a9af329.jpg",
       "PackagePath": "staticwebassets\\Content\\0a6d3fed-b2e1-4365-9cac-f0484a9af329.jpg"
     },
@@ -17,8 +21,20 @@
       "PackagePath": "staticwebassets\\Content\\22525fef-7f4f-403f-899d-a5b9a818e3f5.png"
     },
     {
+      "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\32530a87-e7af-4074-ad79-816b116141ce.jpg",
+      "PackagePath": "staticwebassets\\Content\\32530a87-e7af-4074-ad79-816b116141ce.jpg"
+    },
+    {
+      "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\41a730bd-635d-4aa5-8fe8-869d204fcaf4.jpg",
+      "PackagePath": "staticwebassets\\Content\\41a730bd-635d-4aa5-8fe8-869d204fcaf4.jpg"
+    },
+    {
       "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\4e898cdf-06f7-4d73-b151-3bc3acc16c1a.jpg",
       "PackagePath": "staticwebassets\\Content\\4e898cdf-06f7-4d73-b151-3bc3acc16c1a.jpg"
+    },
+    {
+      "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\63e8bdc6-3280-4b38-b080-e4c14fbe4125.jpg",
+      "PackagePath": "staticwebassets\\Content\\63e8bdc6-3280-4b38-b080-e4c14fbe4125.jpg"
     },
     {
       "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\8342e153-2c0d-413b-b38f-c4ecbdb5efd5.png",
@@ -29,6 +45,10 @@
       "PackagePath": "staticwebassets\\Content\\980901b3-536b-487b-b4ea-09ded0017c80.jpg"
     },
     {
+      "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\News.jpg",
+      "PackagePath": "staticwebassets\\Content\\News.jpg"
+    },
+    {
       "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\a3419580-c60e-4997-bd67-c7dc7661b4a3.jpg",
       "PackagePath": "staticwebassets\\Content\\a3419580-c60e-4997-bd67-c7dc7661b4a3.jpg"
     },
@@ -37,8 +57,16 @@
       "PackagePath": "staticwebassets\\Content\\a91eb3b7-84d8-4058-8661-25f38317b629.png"
     },
     {
+      "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\c5e3b774-fae5-450f-9ca5-f6f4f1d8c3cc.jpg",
+      "PackagePath": "staticwebassets\\Content\\c5e3b774-fae5-450f-9ca5-f6f4f1d8c3cc.jpg"
+    },
+    {
       "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\d116aee3-71e2-4727-9bf7-d345a0c80ca5.jpg",
       "PackagePath": "staticwebassets\\Content\\d116aee3-71e2-4727-9bf7-d345a0c80ca5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\f86416f2-0568-4ec1-8200-82db87fc7d7d.jpg",
+      "PackagePath": "staticwebassets\\Content\\f86416f2-0568-4ec1-8200-82db87fc7d7d.jpg"
     },
     {
       "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\imgnotfound.png",

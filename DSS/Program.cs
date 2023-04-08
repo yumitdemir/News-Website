@@ -30,6 +30,8 @@ public class Program
         builder.Services.AddScoped<INewsService, NewsService>();
         builder.Services.AddScoped<IHomeService, HomeService>();
 
+
+
         builder.Services.AddDbContext<ApplicationDBContext>(options => //! db context service
         {
             var connString = builder.Configuration.GetConnectionString("DefaultConnection");

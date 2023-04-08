@@ -86,14 +86,17 @@ public class DetailsController : Controller
 
     [HttpPost]
     [Route("details/{currentUsername}/news/remove/{id}")]
-    public IActionResult removeNews(int id, string currentUsername)
+    public  IActionResult removeNews(int id, string currentUsername)
     {
         if (HttpContext.Session.GetString("username") != currentUsername)
             return new JsonResult(new { status = "unsuccessful" });
+        Console.WriteLine(id);
+        var tempNews =  _newsRepository.getNewsById(id).Result;
 
-        _newsRepository.RemoveNewsById(id);
+        _newsRepository.RemoveNewsByNewsModel(tempNews);
 
         var result = new { status = "success" };
+
         return new JsonResult(result);
     }
 }

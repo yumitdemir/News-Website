@@ -26,20 +26,14 @@ function removeNews(newsId, userId) {
         })
     }).then(response => response.json()).then(data => {
         if (data.status == "success") {
+
             window.location.replace(`${window.location.origin}/1`)
         } else {
             return;
         }
-
-
-
-
-
         
     });
       
-            
-       
-    
+
 
 }  
