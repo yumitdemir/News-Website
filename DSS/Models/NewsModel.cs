@@ -14,7 +14,7 @@ namespace DSS.Models
         public string? ThumbnailImgUrl { get; set; }
 
        
-        public virtual TagModel TagModel { get; set; } // navigation prop
+        public virtual TagModel? TagModel { get; set; } // navigation prop
 
         
         public virtual UserModel UserModel { get; set; } // navigation prop
