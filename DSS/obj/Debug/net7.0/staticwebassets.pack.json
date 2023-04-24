@@ -69,8 +69,24 @@
       "PackagePath": "staticwebassets\\Content\\f86416f2-0568-4ec1-8200-82db87fc7d7d.jpg"
     },
     {
+      "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\facebook.svg",
+      "PackagePath": "staticwebassets\\Content\\facebook.svg"
+    },
+    {
+      "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\github.svg",
+      "PackagePath": "staticwebassets\\Content\\github.svg"
+    },
+    {
       "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\imgnotfound.png",
       "PackagePath": "staticwebassets\\Content\\imgnotfound.png"
+    },
+    {
+      "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\instagram.svg",
+      "PackagePath": "staticwebassets\\Content\\instagram.svg"
+    },
+    {
+      "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\linkedin.svg",
+      "PackagePath": "staticwebassets\\Content\\linkedin.svg"
     },
     {
       "Id": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\plus-circle.svg",

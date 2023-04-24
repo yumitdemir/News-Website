@@ -80,7 +80,7 @@
                     @{
                         if (@Model?.mainNewsList.Count != 0)
                         {
-                            int itemsToRender = Math.Min(Model?.mainNewsList?.Count ?? 0, 2);
+                            int itemsToRender = Math.Min(Model?.mainNewsList?.Count ?? 0, 3);
 
                             for (var i = 1; i < itemsToRender; i++)
                             {
@@ -129,7 +129,7 @@
                                     <div class="overlay"></div>
                                     <img src="@Model?.mainNewsList[i]?.news.ThumbnailImgUrl" class="card-img-top thumb" alt="...">
                                     <h5 class="card-title position-absolute w-100 text-light card-title-inside-img">
-                                        @Model?.mainNewsList[i]?.news.Title <br/> <small class="text-white-50" style="font-size: 0.5em;">@Model?.mainNewsList[0]?.commentCount Comments</small>
+                                        @Model?.mainNewsList[i]?.news.Title <br/> <small class="text-white-50" style="font-size: 0.5em;">@Model?.mainNewsList[0]?.commentCount Comments  </small>
                                     </h5>
 
                                 </div>
@@ -140,7 +140,7 @@
                                     <div class="overlay"></div>
                                     <img src="Content/News.jpg" class="card-img-top thumb" alt="...">
                                     <h5 class="card-title position-absolute w-100 text-light card-title-inside-img">
-                                        @Model?.mainNewsList[i]?.news.Title <br/> <small class="text-white-50" style="font-size: 0.5em;">@Model?.mainNewsList[0]?.commentCount Comments</small>
+                                            @Model?.mainNewsList[i]?.news.Title <br /> <small class="text-white-50" style="font-size: 0.5em;">@Model?.mainNewsList[0]?.commentCount Comments </small>
                                     </h5>
 
                                 </div>
