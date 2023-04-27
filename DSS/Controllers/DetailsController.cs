@@ -31,7 +31,7 @@ public class DetailsController : Controller
         var sessionFlag = HttpContext?.Session?.GetString("username") == null;
         ViewBag.SessionFlag = sessionFlag;
 
-        var isNewsNull = await _newsRepository.getNewsById(newsId);
+        NewsModel isNewsNull = await _newsRepository.getNewsById(newsId);
         if (isNewsNull == null)
         {
             return RedirectToAction("Index", "Home");
@@ -39,11 +39,11 @@ public class DetailsController : Controller
 
       
 
-        var news = await _detailRepository.GetByIdAsync(newsId);
+        NewsModel news = await _detailRepository.GetByIdAsync(newsId);
 
         var detailDto = new DetailDTO();
         detailDto.news = news;
-        var comments = await _commentRepository.getCommentsByNewsIdAsync(newsId);
+        IEnumerable<CommentModel> comments = await _commentRepository.getCommentsByNewsIdAsync(newsId);
         detailDto.comments = comments.Reverse();
         detailDto.currentUser = _accountRepository.getSesionUser(HttpContext.Session.GetString("username"))?.Result;
 
@@ -56,7 +56,8 @@ public class DetailsController : Controller
     [HttpPost]
     public IActionResult Index(string content, int newsId)
     {
-        if (HttpContext.Session.GetString("username") == null) return RedirectToAction("Index");
+        var user = HttpContext.Session.GetString("username");
+        if (user == null) return RedirectToAction("Index");
 
 
         var newComment = new CommentModel();

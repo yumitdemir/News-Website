@@ -12,18 +12,15 @@ namespace DSS.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-    private readonly ApplicationDBContext _context;
+    
     private readonly INewsRepository _newsRepository;
     private readonly IHomeService _homeService;
     private readonly ICommentRepository _commentRepository;
 
-    public HomeController(ILogger<HomeController> logger, ApplicationDBContext context, INewsRepository newsRepository,IHomeService homeService,ICommentRepository commentRepository)
+    public HomeController( INewsRepository newsRepository,IHomeService homeService,ICommentRepository commentRepository)
     {
         _commentRepository = commentRepository;
         _homeService = homeService;
-        _context = context;
-        _logger = logger;
         _newsRepository = newsRepository;
     }
 
@@ -34,14 +31,12 @@ public class HomeController : Controller
         var sessionFlag = HttpContext.Session.GetString("username") == null;
         ViewBag.SessionFlag = sessionFlag;
 
-
-
-
         var takeStart = id * 10 - 10;
         if (takeStart == 0) takeStart = 0;
         IEnumerable<NewsModel?> newsList = await _newsRepository.getAllNewsAsync();
         newsList = newsList.Reverse();
         List< NewsCommentCountDTO > newsAndCommentsList = new List< NewsCommentCountDTO >();
+        
         foreach (var news in newsList)
         {
           IEnumerable<CommentModel>? Commnets =  await _commentRepository.getCommentsByNewsIdAsync(news.Id);

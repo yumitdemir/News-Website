@@ -21,7 +21,9 @@ namespace DSS.Controllers
         private readonly IWebHostEnvironment _env;
         private readonly INewsService _newsService;
 
-        public NewsController(INewsRepository newsRepository, IAccountRepository accountRepository, ITagRepository tagRepository, IWebHostEnvironment env, INewsService newsService)
+        public NewsController(INewsRepository newsRepository, IAccountRepository accountRepository,
+            ITagRepository tagRepository, IWebHostEnvironment env, INewsService newsService,
+            NewsController? newsController)
         {
             _newsService = newsService;
              _newsRepository = newsRepository;
@@ -33,9 +35,7 @@ namespace DSS.Controllers
         public IActionResult AddNews()
         {
             NewsModel tempNews = new NewsModel();
-           
-
-
+            
             return View(tempNews);
         }
 
@@ -43,14 +43,14 @@ namespace DSS.Controllers
         [HttpPost]
         public  async Task<IActionResult> AddNews(string title, string content, string tag, IFormFile thumbnailImg)
         {
-            var errors = _newsService.ValidateNewsModel(title, content, tag, thumbnailImg);
+            List<ErrorDTO> errors = _newsService.ValidateNewsModel(title, content, tag, thumbnailImg);
             
             if (errors.Count() != 0)
             {
                 var wrongNew = new NewsModel();
                 wrongNew.Title = title;
                 wrongNew.Content = content;
-                var tempTag = await _tagRepository.getTagByNameAsync(tag);
+                TagModel tempTag = await _tagRepository.getTagByNameAsync(tag);
                 wrongNew.TagModel = tempTag;
                 
                 foreach (var err in errors)
