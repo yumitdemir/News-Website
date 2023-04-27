@@ -57,36 +57,64 @@ namespace Tests
             result.Should().BeOfType<Task<IActionResult>>();
         }
 
-
         [Fact]
-        public void DetailsController_IndexHttp_ReturnsSuccess()
+        public void DetailsController_IndexHttpPost_ReturnsSuccess()
         {
+            // Arrange
             int newsId = 1;
-            string content = "test";
+            string content = "dsadas";
 
-            var httpContext = A.Fake<HttpContext>();
-            var session = A.Fake<ISession>();
-            A.CallTo(() => httpContext.Session).Returns(session);
-
-            A.CallTo(() => session.GetString("username")).Returns();
-            _detailsController.ControllerContext = new ControllerContext()
+            var mockSession = new Mock<ISession>();
+            _detailsController.ControllerContext = new ControllerContext
             {
-                HttpContext = httpContext,
+                HttpContext = new DefaultHttpContext { Session = mockSession.Object }
             };
 
-            CommentModel newComment = new CommentModel();
-            newComment.Content = content;
-            newComment.NewsModel = A.Fake<NewsModel>();
+            var newComment = new CommentModel();
             newComment.UserModel = A.Fake<UserModel>();
+            newComment.Content = "tesst";
+            newComment.NewsModel = A.Fake<NewsModel>();
 
-            A.CallTo(() => _newsRepository.getNewsById(newsId)).Returns(Task.FromResult(newComment.NewsModel));
+            _commentRepository.addComment(newComment);
 
             //Act
-            var result = _detailsController.Index(content, newsId);
+            var result = _detailsController.Index(newsId);
 
             //Assert
-            result.Should().BeOfType<IActionResult>();
+            result.Should().BeOfType<Task<IActionResult>>();
         }
+
+
+        [Fact]
+        public void DetailsController_RemoveComment_ReturnsSuccess()
+        {
+            // Arrange
+            int newsId = 1;
+            var currentUsername = "username";
+
+            var mockSession = new Mock<ISession>();
+            
+          
+        _detailsController.ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext { Session = mockSession.Object },
+            };
+        _detailsController.HttpContext.Session.Set("username", Encoding.UTF8.GetBytes("username"));
+
+            
+
+
+            _commentRepository.removeCommentById(newsId);
+
+            //Act
+            var result = _detailsController.removeComment(newsId,currentUsername);
+
+            //Assert
+            result.Should().BeOfType<JsonResult>();
+
+        }
+
+
 
     }
 }

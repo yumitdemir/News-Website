@@ -75,7 +75,7 @@ public class DetailsController : Controller
     [Route("details/{currentUsername}/comments/remove/{id}")]
     public IActionResult removeComment(int id, string currentUsername)
     {
-        
+       
         if (HttpContext.Session.GetString("username") != currentUsername)
             return new JsonResult(new { status = "unsuccessful" });
 

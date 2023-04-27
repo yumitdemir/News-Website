@@ -1,7 +1,6 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7fb0465c_002D2f52_002D4beb_002D96ea_002D50bbeb4f1b72/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="HomeController_AddNews_ReturnsSuccess" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1d8a4cc2_002Dbcb4_002D4727_002Da4f5_002Da929d0a1bf4c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="DetailsController_RemoveComment_ReturnsSuccess" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::A086ED52-B996-4FA4-8C8E-69BD9CBD9809::net7.0::Tests.NewsControllerTests.HomeController_AddNews_ReturnsSuccess&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::A086ED52-B996-4FA4-8C8E-69BD9CBD9809::net7.0::Tests.DetailsControllerTests.DetailsController_IndexHttp_ReturnsSuccess&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::A086ED52-B996-4FA4-8C8E-69BD9CBD9809::net7.0::Tests.DetailsControllerTests.DetailsController_RemoveComment_ReturnsSuccess&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
