@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Ts+SZujHR3Ubw4oT3mPo7fojReFZGHBM8rmhMiXjqAY=",
+  "Hash": "t6fHDfRYtpi26/M6vmelIJDGSbvgLfDh5PHXU4BhUcc=",
   "Source": "DSS",
   "BasePath": "_content/DSS",
   "Mode": "Default",
@@ -321,6 +321,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Content\\facebook.svg"
+    },
+    {
+      "Identity": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\ff2a53be-fec3-4360-8a04-1905b295dc69.png",
+      "SourceId": "DSS",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\",
+      "BasePath": "_content/DSS",
+      "RelativePath": "Content/ff2a53be-fec3-4360-8a04-1905b295dc69.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Content\\ff2a53be-fec3-4360-8a04-1905b295dc69.png"
     },
     {
       "Identity": "C:\\Users\\umitd\\OneDrive\\Desktop\\DSS\\DSS\\wwwroot\\Content\\github.svg",

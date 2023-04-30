@@ -22,8 +22,8 @@ namespace DSS.Controllers
         private readonly INewsService _newsService;
 
         public NewsController(INewsRepository newsRepository, IAccountRepository accountRepository,
-            ITagRepository tagRepository, IWebHostEnvironment env, INewsService newsService,
-            NewsController? newsController)
+            ITagRepository tagRepository, IWebHostEnvironment env, INewsService newsService
+            )
         {
             _newsService = newsService;
              _newsRepository = newsRepository;
