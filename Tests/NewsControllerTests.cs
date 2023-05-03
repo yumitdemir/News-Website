@@ -38,7 +38,7 @@ namespace Tests
             _env = A.Fake<IWebHostEnvironment>();
             //SUT
 
-            _newsController = new NewsController(_newsRepository, _accountRepository, _tagRepository, _env, _newsService, _newsController);
+            _newsController = new NewsController(_newsRepository, _accountRepository, _tagRepository, _env, _newsService);
 
         }
 

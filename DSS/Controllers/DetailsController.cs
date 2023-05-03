@@ -91,7 +91,7 @@ public class DetailsController : Controller
     {
         if (HttpContext.Session.GetString("username") != currentUsername)
             return new JsonResult(new { status = "unsuccessful" });
-        Console.WriteLine(id);
+        
         var tempNews =  _newsRepository.getNewsById(id).Result;
 
         _newsRepository.RemoveNewsByNewsModel(tempNews);

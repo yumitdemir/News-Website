@@ -1,6 +1,23 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1d8a4cc2_002Dbcb4_002D4727_002Da4f5_002Da929d0a1bf4c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="DetailsController_RemoveComment_ReturnsSuccess" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1d8a4cc2_002Dbcb4_002D4727_002Da4f5_002Da929d0a1bf4c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="DetailsController_RemoveComment_ReturnsSuccess" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::A086ED52-B996-4FA4-8C8E-69BD9CBD9809::net7.0::Tests.DetailsControllerTests.DetailsController_RemoveComment_ReturnsSuccess&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::A086ED52-B996-4FA4-8C8E-69BD9CBD9809::net7.0::Tests.AccountControllerTests.DetailsController_RemoveComment_ReturnsSuccess&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::A086ED52-B996-4FA4-8C8E-69BD9CBD9809::net7.0::Tests.AccountControllerTests.DetailsController_Welcome_ReturnsSuccess&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c73eaeaa_002D67ce_002D4fbe_002Dbf38_002D328de85fd9d0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="DetailsController_SignIn_ReturnsSuccess" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::A086ED52-B996-4FA4-8C8E-69BD9CBD9809::net7.0::Tests.AccountControllerTests.DetailsController_SignIn_ReturnsSuccess&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::A086ED52-B996-4FA4-8C8E-69BD9CBD9809::net7.0::Tests.AccountControllerTests.DetailsController_Welcome_ReturnsSuccess&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ff005744_002D0bb9_002D4e94_002Da441_002Dc06abee112d7/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="DetailsController_Welcome_ReturnsSuccess" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::A086ED52-B996-4FA4-8C8E-69BD9CBD9809::net7.0::Tests.AccountControllerTests.DetailsController_Welcome_ReturnsSuccess&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::A086ED52-B996-4FA4-8C8E-69BD9CBD9809::net7.0::Tests.AccountControllerTests.DetailsController_SignUp_ReturnsSuccess&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::A086ED52-B996-4FA4-8C8E-69BD9CBD9809::net7.0::Tests.AccountControllerTests.DetailsController_SignUpHTTP_ReturnsSuccess&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::A086ED52-B996-4FA4-8C8E-69BD9CBD9809::net7.0::Tests.AccountControllerTests.DetailsController_SignInHTTP_ReturnsSuccess&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::A086ED52-B996-4FA4-8C8E-69BD9CBD9809::net7.0::Tests.AccountControllerTests.DetailsController_SignOut_ReturnsSuccess&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
