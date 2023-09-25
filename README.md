@@ -11,6 +11,7 @@ Deletion: Users can delete their own comments and posts.
 Server-side Pagination: The website uses server-side pagination for displaying news articles.
 
 ## Website Video
+### Please click the image to watch the youtube video
 [![AlternateText](https://img.youtube.com/vi/7UEW2Z0Nskw/0.jpg)](https://www.youtube.com/watch?v=7UEW2Z0Nskw)
 
 ## Screenshots of The Website
