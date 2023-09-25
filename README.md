@@ -11,9 +11,16 @@ Deletion: Users can delete their own comments and posts.
 Server-side Pagination: The website uses server-side pagination for displaying news articles.
 
 ## Website Video
-[![YoutbeVideo]([https://img.youtube.com/vi/)](https://www.youtube.com/watch?v=VIDEO_ID](https://www.youtube.com/watch?v=9jXndwC4Ar4))
+[![YoutbeVideo]([https://www.youtube.com/watch?v=VIDEO_ID](https://www.youtube.com/watch?v=9jXndwC4Ar4)](https://www.youtube.com/watch?v=7UEW2Z0Nskw))
 
 ## Screenshots of The Website
 ### Guest
-![home](https://github.com/yumitdemir/go-bus-frontend/assets/108368506/d7f35215-452f-4e4b-bb44-e43d5c75f2ad)
+![screencapture-localhost-46856-1-2023-09-25-03_11_21](https://github.com/yumitdemir/News-Website/assets/108368506/9f6f5896-8844-495a-abd6-42b9d809ac3f)
 <pre>                               </pre>
+![screencapture-localhost-46856-News-AddNews-2023-09-25-03_15_12](https://github.com/yumitdemir/News-Website/assets/108368506/2b07aaeb-f9de-4f3a-a100-f7eab221c24a)
+<pre>                               </pre>
+![screencapture-localhost-46856-Details-1675-2023-09-25-03_12_59](https://github.com/yumitdemir/News-Website/assets/108368506/681b5fa7-8eaf-4ec8-ae1b-debd2eccce3c)
+<pre>                               </pre>
+![screencapture-localhost-46856-Account-SignIn-2023-09-25-03_11_57](https://github.com/yumitdemir/News-Website/assets/108368506/34da7fba-a520-4f29-acc9-183c0edd05bc)
+<pre>                               </pre>
+![screencapture-localhost-46856-1-2023-09-25-03_11_34](https://github.com/yumitdemir/News-Website/assets/108368506/73257801-d1ef-4a1e-adcc-4e4266ad936c)
