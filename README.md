@@ -11,10 +11,9 @@ Deletion: Users can delete their own comments and posts.
 Server-side Pagination: The website uses server-side pagination for displaying news articles.
 
 ## Website Video
-[![YoutbeVideo]([https://www.youtube.com/watch?v=VIDEO_ID](https://www.youtube.com/watch?v=9jXndwC4Ar4)](https://www.youtube.com/watch?v=7UEW2Z0Nskw))]
+[![AlternateText](https://img.youtube.com/vi/7UEW2Z0Nskw/0.jpg)](https://www.youtube.com/watch?v=7UEW2Z0Nskw)
 
 ## Screenshots of The Website
-### Guest
 ![screencapture-localhost-46856-1-2023-09-25-03_11_21](https://github.com/yumitdemir/News-Website/assets/108368506/9f6f5896-8844-495a-abd6-42b9d809ac3f)
 <pre>                               </pre>
 ![screencapture-localhost-46856-News-AddNews-2023-09-25-03_15_12](https://github.com/yumitdemir/News-Website/assets/108368506/2b07aaeb-f9de-4f3a-a100-f7eab221c24a)
